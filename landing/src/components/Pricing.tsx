@@ -5,7 +5,7 @@ const plans = [
     variant: 'light',
     limits: ['50 productos', '2 usuarios', '1 almacén', '1 caja'],
     cta: 'Comenzar prueba',
-    icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>,
+    icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>,
   },
   {
     name: 'Básico', price: '$19', period: '/mes',
@@ -13,7 +13,7 @@ const plans = [
     variant: 'light',
     limits: ['200 productos', '5 usuarios', '2 almacenes', '2 cajas'],
     cta: 'Elegir Básico',
-    icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
+    icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
   },
   {
     name: 'Pro', price: '$49', period: '/mes',
