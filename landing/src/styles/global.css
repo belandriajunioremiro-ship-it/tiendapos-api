@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "flag-icons/css/flag-icons.min.css";
 
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -32,20 +31,6 @@
               radial-gradient(ellipse 50% 40% at 50% 100%, rgba(99,102,241,0.08) 0%, transparent 50%);
   background-size: 200% 200%;
   animation: mesh-shift 12s ease-in-out infinite alternate;
-}
-
-/* Shimmer text */
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-.text-shimmer {
-  background: linear-gradient(90deg, #7c3aed 0%, #a78bfa 25%, #7c3aed 50%, #a78bfa 75%, #7c3aed 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 4s linear infinite;
 }
 
 /* Glass card */
