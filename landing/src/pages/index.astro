@@ -1,33 +1,483 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Benefits from '../components/Benefits';
-import Features from '../components/Features';
-import Countries from '../components/Countries';
-import Pricing from '../components/Pricing';
-import Footer from '../components/Footer';
+const year = new Date().getFullYear();
 ---
 
 <Layout>
-  <Navbar client:visible />
-  <Hero client:visible />
-  <Benefits client:visible />
-  <Features client:visible />
-  <Countries client:visible />
-  <Pricing client:visible />
-  <Footer client:visible />
+  <!-- Mobile overlay -->
+  <div class="nav-overlay fixed inset-0 z-90 hidden bg-black/40 opacity-0 transition-opacity duration-300" id="navOverlay"></div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu fixed inset-0 z-95 flex flex-col items-center justify-center gap-2 bg-white/98 opacity-0 invisible transition-all duration-300 backdrop-blur-lg" id="mobileMenu">
+    <button class="close-btn absolute right-5 top-4 rounded-xl p-2 text-gray-400 transition-all hover:bg-violet-50 hover:text-violet-600" id="closeMenuBtn">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <a href="#por-que" class="mobile-link rounded-xl px-8 py-3 text-xl font-semibold tracking-tight text-gray-900 no-underline transition-all hover:bg-violet-50 hover:text-violet-600">Por qué TiendaPOS</a>
+    <a href="#caracteristicas" class="mobile-link rounded-xl px-8 py-3 text-xl font-semibold tracking-tight text-gray-900 no-underline transition-all hover:bg-violet-50 hover:text-violet-600">Características</a>
+    <a href="#paises" class="mobile-link rounded-xl px-8 py-3 text-xl font-semibold tracking-tight text-gray-900 no-underline transition-all hover:bg-violet-50 hover:text-violet-600">Países</a>
+    <a href="#planes" class="mobile-link rounded-xl px-8 py-3 text-xl font-semibold tracking-tight text-gray-900 no-underline transition-all hover:bg-violet-50 hover:text-violet-600">Planes</a>
+    <a href="https://wa.me/584247253544?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20TiendaPOS" target="_blank" class="wa-link mt-6 inline-flex items-center gap-2 rounded-full bg-[#25d366] px-6 py-3 text-base font-semibold text-white no-underline transition-all hover:scale-105 hover:bg-[#1ebe5d]">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Contáctanos
+    </a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 border-b border-gray-200 bg-[#fafafa]/94 backdrop-blur-md">
+    <div class="mx-auto flex max-w-[1140px] items-center justify-between px-6 py-3.5">
+      <a href="#" class="text-xl font-extrabold no-underline text-[#1a1a2e]">Tienda<span class="text-violet-600">POS</span></a>
+      <div class="hidden items-center gap-7 md:flex">
+        <a href="#por-que" class="text-sm font-medium text-gray-600 no-underline transition-colors hover:text-violet-600">Por qué TiendaPOS</a>
+        <a href="#caracteristicas" class="text-sm font-medium text-gray-600 no-underline transition-colors hover:text-violet-600">Características</a>
+        <a href="#paises" class="text-sm font-medium text-gray-600 no-underline transition-colors hover:text-violet-600">Países</a>
+        <a href="#planes" class="text-sm font-medium text-gray-600 no-underline transition-colors hover:text-violet-600">Planes</a>
+        <a href="https://wa.me/584247253544?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20TiendaPOS" target="_blank" class="inline-flex items-center gap-1.5 rounded-full bg-[#25d366] px-4 py-2 text-xs font-semibold text-white no-underline transition-all hover:bg-[#1ebe5d]">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Contáctanos
+        </a>
+      </div>
+      <button class="hamburger flex flex-col gap-1 border-none bg-transparent p-1.5 md:hidden" id="hamburgerBtn" aria-label="Menú">
+        <span class="ham-line block h-0.5 w-5.5 rounded-sm bg-[#1a1a2e] transition-all duration-300"></span>
+        <span class="ham-line block h-0.5 w-5.5 rounded-sm bg-[#1a1a2e] transition-all duration-300"></span>
+        <span class="ham-line block h-0.5 w-5.5 rounded-sm bg-[#1a1a2e] transition-all duration-300"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mx-auto max-w-[1140px] px-6">
+    <!-- Hero -->
+    <section class="scroll-mt-[4.5rem] px-2 py-[clamp(3rem,6vw,5.5rem)] text-center">
+      <h1 class="mx-auto mb-4 max-w-[780px] text-[clamp(1.8rem,5vw,3.5rem)] font-bold leading-tight text-[#1a1a2e]">
+        Tu negocio merece un POS <span class="text-violet-600">sin fronteras</span>
+      </h1>
+      <p class="sub mx-auto mb-8 max-w-[680px] px-1 text-[clamp(0.95rem,2vw,1.1rem)] leading-relaxed text-gray-600">
+        Multi-tenant, multimoneda y preparado para los regímenes fiscales de 9 países.
+        Gestiona ventas, inventario, facturación y créditos desde un solo sistema.
+      </p>
+      <div class="mx-auto mt-8 max-w-[680px] rounded-xl border border-gray-200 bg-white/50 px-4 py-3 text-center text-sm leading-relaxed text-gray-600">
+        Este sistema gestiona datos formales de facturación — <strong>RIF/NIT/RFC/RUC/CUIT</strong>, razones sociales e impuestos — para cumplir con requisitos contables y fiscales de cada país. <strong class="text-red-600">No es un sistema fiscal certificado</strong>. No realiza declaraciones de impuestos ni retenciones legales. Cada comercio es responsable de su propio cumplimiento fiscal local.
+      </div>
+    </section>
+
+    <!-- Por qué TiendaPOS -->
+    <h2 id="por-que" class="scroll-mt-[4.5rem] text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#1a1a2e]">Por qué TiendaPOS</h2>
+    <p class="section-sub mx-auto mb-12 max-w-[640px] px-4 text-center text-base leading-relaxed text-gray-500">
+      Construido para negocios que necesitan un sistema robusto, flexible y adaptado a la realidad latinoamericana.
+    </p>
+
+    <section class="vp-grid mb-6 grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-5">
+      <div class="vp-card rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-500/10">
+        <div class="icon mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-100 to-violet-50 text-violet-600">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3 class="mb-1 text-base font-bold text-[#1a1a2e]">Multi-tenant nativo</h3>
+        <p class="text-sm leading-relaxed text-gray-500">Una sola instancia, múltiples tiendas aisladas. Ideal para cadenas, franquicias o negocios independientes.</p>
+      </div>
+      <div class="vp-card rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-500/10">
+        <div class="icon mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-100 to-violet-50 text-violet-600">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3 class="mb-1 text-base font-bold text-[#1a1a2e]">Multimoneda real</h3>
+        <p class="text-sm leading-relaxed text-gray-500">USD, VES, COP, MXN, ARS y más. Tasas de cambio con historial, pagos mixtos y cálculo de IGTF para Venezuela.</p>
+      </div>
+      <div class="vp-card rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-500/10">
+        <div class="icon mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-100 to-violet-50 text-violet-600">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3 class="mb-1 text-base font-bold text-[#1a1a2e]">Facturación regional</h3>
+        <p class="text-sm leading-relaxed text-gray-500">RIF, NIT, RFC, RUC, CUIT. IVA/IGV configurable por país. Facturas, cotizaciones, notas y devoluciones.</p>
+      </div>
+      <div class="vp-card rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-500/10">
+        <div class="icon mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-100 to-violet-50 text-violet-600">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="mb-1 text-base font-bold text-[#1a1a2e]">API-first</h3>
+        <p class="text-sm leading-relaxed text-gray-500">Backend Laravel con 112 endpoints protegidos con Sanctum. Consume desde cualquier frontend con total flexibilidad.</p>
+      </div>
+    </section>
+
+    <!-- Características -->
+    <h2 id="caracteristicas" class="scroll-mt-[4.5rem] text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#1a1a2e]">Todo lo que necesitas para operar</h2>
+    <p class="section-sub mx-auto mb-12 max-w-[640px] px-4 text-center text-base leading-relaxed text-gray-500">
+      Módulos completos que cubren cada aspecto del día a día de tu punto de venta.
+    </p>
+
+    <section class="features-grid mb-6 grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-3">
+      <!-- 9 feature cards -->
+      <div class="feature-card flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300">
+        <div class="icon flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+          <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">POS + Caja</h4>
+          <p class="text-sm leading-relaxed text-gray-500">Pantalla de venta rápida. Sesiones de caja con apertura y cierre. Pagos mixtos y descuentos.</p>
+        </div>
+      </div>
+      <div class="feature-card flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300">
+        <div class="icon flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div>
+          <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Facturación</h4>
+          <p class="text-sm leading-relaxed text-gray-500">Facturas, cotizaciones, notas de débito y devoluciones. Numeración correlativa por tipo.</p>
+        </div>
+      </div>
+      <div class="feature-card flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300">
+        <div class="icon flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div>
+          <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Inventario</h4>
+          <p class="text-sm leading-relaxed text-gray-500">Stock en tiempo real. Múltiples almacenes, lotes con FEFO, traslados y alertas de stock bajo.</p>
+        </div>
+      </div>
+      <div class="feature-card flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300">
+        <div class="icon flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Multimoneda</h4>
+          <p class="text-sm leading-relaxed text-gray-500">USD, VES, COP, MXN, ARS, PEN, CLP, BOB, UYU. Tasas de cambio con historial e IGTF.</p>
+        </div>
+      </div>
+      <div class="feature-card flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300">
+        <div class="icon flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Roles y permisos</h4>
+          <p class="text-sm leading-relaxed text-gray-500">Administrador, supervisor y cajero. 69 permisos granulares para cada acción del sistema.</p>
+        </div>
+      </div>
+      <div class="feature-card flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300">
+        <div class="icon flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div>
+          <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Créditos</h4>
+          <p class="text-sm leading-relaxed text-gray-500">Cuentas por cobrar, abonos y facturas a crédito con bloqueo para evitar sobreventa.</p>
+        </div>
+      </div>
+      <div class="feature-card flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300">
+        <div class="icon flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        </div>
+        <div>
+          <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Reportes</h4>
+          <p class="text-sm leading-relaxed text-gray-500">Ventas por período, rentabilidad, inventario y cuentas por cobrar. KPIs en tiempo real.</p>
+        </div>
+      </div>
+      <div class="feature-card flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300">
+        <div class="icon flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        </div>
+        <div>
+          <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Suscripciones</h4>
+          <p class="text-sm leading-relaxed text-gray-500">Trial, Básico, Pro, Premium. Límites por productos, usuarios, almacenes y cajas.</p>
+        </div>
+      </div>
+      <div class="feature-card flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300">
+        <div class="icon flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div>
+          <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Onboarding</h4>
+          <p class="text-sm leading-relaxed text-gray-500">Wizard de 4 pasos: cuenta, datos fiscales, configuración y primer producto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Países -->
+    <h2 id="paises" class="scroll-mt-[4.5rem] text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#1a1a2e]">Países que soporta TiendaPOS</h2>
+    <p class="section-sub mx-auto mb-12 max-w-[640px] px-4 text-center text-base leading-relaxed text-gray-500">
+      Regímenes fiscales, monedas y métodos de pago nativos para cada país de la región.
+    </p>
+
+    <section class="countries-section mb-6">
+      <div class="country-chips mb-3 flex flex-wrap items-center justify-center gap-2.5">
+        <div class="chip flex h-13 w-13 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-md hover:shadow-violet-500/15"><span class="fi fi-ve block text-2xl leading-none"></span></div>
+        <div class="chip flex h-13 w-13 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-md hover:shadow-violet-500/15"><span class="fi fi-co block text-2xl leading-none"></span></div>
+        <div class="chip flex h-13 w-13 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-md hover:shadow-violet-500/15"><span class="fi fi-mx block text-2xl leading-none"></span></div>
+        <div class="chip flex h-13 w-13 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-md hover:shadow-violet-500/15"><span class="fi fi-ec block text-2xl leading-none"></span></div>
+        <div class="chip flex h-13 w-13 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-md hover:shadow-violet-500/15"><span class="fi fi-ar block text-2xl leading-none"></span></div>
+        <div class="chip flex h-13 w-13 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-md hover:shadow-violet-500/15"><span class="fi fi-pe block text-2xl leading-none"></span></div>
+        <div class="chip flex h-13 w-13 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-md hover:shadow-violet-500/15"><span class="fi fi-cl block text-2xl leading-none"></span></div>
+        <div class="chip flex h-13 w-13 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-md hover:shadow-violet-500/15"><span class="fi fi-bo block text-2xl leading-none"></span></div>
+        <div class="chip flex h-13 w-13 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-violet-300 hover:shadow-md hover:shadow-violet-500/15"><span class="fi fi-uy block text-2xl leading-none"></span></div>
+      </div>
+      <div class="country-names mb-8 text-center text-sm font-medium text-gray-700">
+        Venezuela &middot; Colombia &middot; México &middot; Ecuador &middot; Argentina
+        &middot; Perú &middot; Chile &middot; Bolivia &middot; Uruguay
+      </div>
+      <div class="fiscal-grid mx-auto grid max-w-[680px] grid-cols-2 gap-3 max-sm:grid-cols-1">
+        <div class="fiscal-item flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
+          <div class="fi-icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-100 to-violet-50 text-violet-600">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+          </div>
+          <div>
+            <div class="fi-label text-[11px] font-semibold uppercase tracking-wider text-violet-600">Identificación fiscal</div>
+            <div class="fi-value text-sm font-medium text-gray-700">RIF, NIT, RFC, RUC, CUIT</div>
+            <div class="fi-sub mt-0.5 text-xs text-gray-400">Según el país</div>
+          </div>
+        </div>
+        <div class="fiscal-item flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
+          <div class="fi-icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-100 to-violet-50 text-violet-600">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div>
+            <div class="fi-label text-[11px] font-semibold uppercase tracking-wider text-violet-600">Impuestos</div>
+            <div class="fi-value text-sm font-medium text-gray-700">IVA / IGV por país</div>
+            <div class="fi-sub mt-0.5 text-xs text-gray-400">Tasas locales configurables</div>
+          </div>
+        </div>
+        <div class="fiscal-item flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
+          <div class="fi-icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-100 to-violet-50 text-violet-600">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <div class="fi-label text-[11px] font-semibold uppercase tracking-wider text-violet-600">Monedas</div>
+            <div class="fi-value text-sm font-medium text-gray-700">USD, VES, COP, MXN, ARS, PEN, CLP, BOB, UYU</div>
+            <div class="fi-sub mt-0.5 text-xs text-gray-400">Multimoneda con tasas históricas</div>
+          </div>
+        </div>
+        <div class="fiscal-item flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
+          <div class="fi-icon flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-100 to-violet-50 text-violet-600">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="fi-label text-[11px] font-semibold uppercase tracking-wider text-violet-600">Estatus fiscal</div>
+            <div class="fi-value text-sm font-medium text-gray-700">Datos formales</div>
+            <div class="fi-sub mt-0.5 text-xs text-gray-400">Sin certificación fiscal</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planes -->
+    <h2 id="planes" class="scroll-mt-[4.5rem] text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#1a1a2e]">Planes</h2>
+    <p class="section-sub mx-auto mb-12 max-w-[640px] px-4 text-center text-base leading-relaxed text-gray-500">
+      Desde emprender hasta escalar. Elige el plan que mejor se ajuste a tu operación.
+    </p>
+
+    <section class="plans-grid mb-6 grid grid-cols-[repeat(auto-fit,minmax(min(230px,100%),1fr))] items-start gap-5">
+      <!-- Trial -->
+      <div class="plan-card relative overflow-hidden rounded-2xl border border-gray-200 bg-white px-6 py-8 text-center transition-all hover:-translate-y-1 hover:shadow-lg">
+        <div class="plan-icon trial mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100/80 text-gray-500">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="plan-name mb-1 text-xs font-bold uppercase tracking-wider text-violet-600">Trial</div>
+        <div class="plan-price mb-1 text-3xl font-extrabold text-[#1a1a2e]">$0 <span class="text-sm font-normal text-gray-400">/mes</span></div>
+        <div class="plan-desc mx-auto mb-5 max-w-[180px] border-b border-gray-100 pb-4 text-sm text-gray-500">14 días gratis. Sin compromiso.</div>
+        <ul class="mx-auto max-w-[180px] list-none text-left text-sm leading-8 text-gray-600">
+          <li class="flex items-center gap-1.5"><span class="check trial flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-gray-200/60 text-gray-500"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 50 productos</li>
+          <li class="flex items-center gap-1.5"><span class="check trial flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-gray-200/60 text-gray-500"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 2 usuarios</li>
+          <li class="flex items-center gap-1.5"><span class="check trial flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-gray-200/60 text-gray-500"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 1 almacén</li>
+          <li class="flex items-center gap-1.5"><span class="check trial flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-gray-200/60 text-gray-500"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 1 caja</li>
+        </ul>
+      </div>
+
+      <!-- Básico -->
+      <div class="plan-card relative overflow-hidden rounded-2xl border border-gray-200 bg-white px-6 py-8 text-center transition-all hover:-translate-y-1 hover:shadow-lg">
+        <div class="plan-icon basico mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100/80 text-indigo-500">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="plan-name mb-1 text-xs font-bold uppercase tracking-wider text-violet-600">Básico</div>
+        <div class="plan-price mb-1 text-3xl font-extrabold text-[#1a1a2e]">$19 <span class="text-sm font-normal text-gray-400">/mes</span></div>
+        <div class="plan-desc mx-auto mb-5 max-w-[180px] border-b border-gray-100 pb-4 text-sm text-gray-500">Para negocios en crecimiento.</div>
+        <ul class="mx-auto max-w-[180px] list-none text-left text-sm leading-8 text-gray-600">
+          <li class="flex items-center gap-1.5"><span class="check basico flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-indigo-100/80 text-indigo-500"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 200 productos</li>
+          <li class="flex items-center gap-1.5"><span class="check basico flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-indigo-100/80 text-indigo-500"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 5 usuarios</li>
+          <li class="flex items-center gap-1.5"><span class="check basico flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-indigo-100/80 text-indigo-500"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 2 almacenes</li>
+          <li class="flex items-center gap-1.5"><span class="check basico flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-indigo-100/80 text-indigo-500"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 2 cajas</li>
+        </ul>
+      </div>
+
+      <!-- Pro (Popular) -->
+      <div class="plan-card highlight relative overflow-hidden rounded-2xl border border-violet-600 bg-white px-6 py-8 text-center shadow-lg shadow-violet-500/20 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/30 scale-[1.03]">
+        <div class="plan-badge absolute right-[-28px] top-3 rotate-45 bg-violet-600 px-8 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Popular</div>
+        <div class="plan-icon pro mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="plan-name mb-1 text-xs font-bold uppercase tracking-wider text-violet-600">Pro</div>
+        <div class="plan-price mb-1 text-3xl font-extrabold text-[#1a1a2e]">$49 <span class="text-sm font-normal text-gray-400">/mes</span></div>
+        <div class="plan-desc mx-auto mb-5 max-w-[180px] border-b border-gray-100 pb-4 text-sm text-gray-500">La opción más balanceada.</div>
+        <ul class="mx-auto max-w-[180px] list-none text-left text-sm leading-8 text-gray-600">
+          <li class="flex items-center gap-1.5"><span class="check pro flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-violet-100/80 text-violet-600"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 1000 productos</li>
+          <li class="flex items-center gap-1.5"><span class="check pro flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-violet-100/80 text-violet-600"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 15 usuarios</li>
+          <li class="flex items-center gap-1.5"><span class="check pro flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-violet-100/80 text-violet-600"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 5 almacenes</li>
+          <li class="flex items-center gap-1.5"><span class="check pro flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-violet-100/80 text-violet-600"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 5 cajas</li>
+        </ul>
+      </div>
+
+      <!-- Premium -->
+      <div class="plan-card premium-bg relative overflow-hidden rounded-2xl border border-violet-500/20 bg-gradient-to-br from-[#1e1b2e] to-[#2d1f3e] px-6 py-8 text-center transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/20">
+        <div class="plan-icon premium mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-300/20 to-violet-400/10 text-violet-300">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="plan-name mb-1 text-xs font-bold uppercase tracking-wider text-violet-300">Premium</div>
+        <div class="plan-price mb-1 text-3xl font-extrabold text-gray-50">$99 <span class="text-sm font-normal text-gray-400">/mes</span></div>
+        <div class="plan-desc mx-auto mb-5 max-w-[180px] border-b border-white/10 pb-4 text-sm text-gray-400">Sin límites, sin preocupaciones.</div>
+        <ul class="mx-auto max-w-[180px] list-none text-left text-sm leading-8 text-gray-300">
+          <li class="flex items-center gap-1.5"><span class="check premium flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-violet-300/20 text-violet-300"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> Productos ilimitados</li>
+          <li class="flex items-center gap-1.5"><span class="check premium flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-violet-300/20 text-violet-300"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> Usuarios ilimitados</li>
+          <li class="flex items-center gap-1.5"><span class="check premium flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-violet-300/20 text-violet-300"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> Almacenes ilimitados</li>
+          <li class="flex items-center gap-1.5"><span class="check premium flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-violet-300/20 text-violet-300"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> Cajas ilimitadas</li>
+        </ul>
+      </div>
+    </section>
+  </div>
 
   <!-- WhatsApp floating button -->
-  <a
-    href="https://wa.me/584247253544?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20TiendaPOS"
-    target="_blank"
-    rel="noopener"
-    class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-lg shadow-[#25d366]/30 transition-all hover:scale-110 hover:shadow-xl"
-    aria-label="WhatsApp"
-  >
-    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
+  <a href="https://wa.me/584247253544?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20TiendaPOS" target="_blank" class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-lg shadow-[#25d366]/35 transition-all hover:scale-110 hover:shadow-xl" aria-label="WhatsApp">
+    <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
+
+  <!-- Modals -->
+  <div class="modal-overlay fixed inset-0 z-50 hidden items-center justify-center bg-black/40 p-6 backdrop-blur-sm" id="modalPrivacidad">
+    <div class="modal-box w-full max-w-[600px] max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
+      <div class="modal-header mb-5 flex items-center justify-between">
+        <h3 class="text-lg font-bold text-[#1a1a2e]">Política de Privacidad</h3>
+        <button class="modal-close rounded-lg p-1.5 text-gray-400 transition-all hover:bg-violet-50 hover:text-violet-600">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body text-sm leading-relaxed text-gray-600">
+        <p class="mb-3">En TiendaPOS, la protección de tus datos es una prioridad. Esta política describe cómo recopilamos, usamos y protegemos la información de nuestros usuarios.</p>
+        <p class="mb-3"><strong>Información que recopilamos:</strong> Datos de registro (nombre, correo electrónico, contraseña), información de la tienda (RIF/NIT/RFC, razón social, dirección) y datos transaccionales generados durante el uso del sistema.</p>
+        <p class="mb-3"><strong>Uso de la información:</strong> Utilizamos tus datos únicamente para proveer el servicio: procesar ventas, generar facturas, gestionar inventario y mantener tu cuenta activa. No compartimos tu información con terceros sin tu consentimiento explícito.</p>
+        <p class="mb-3"><strong>Seguridad:</strong> Implementamos medidas técnicas y organizativas para proteger tus datos contra acceso no autorizado, pérdida o alteración. Las comunicaciones están cifradas vía HTTPS y los tokens de autenticación se almacenan de forma segura.</p>
+        <p class="mb-3"><strong>Retención:</strong> Conservamos tus datos mientras tu cuenta esté activa. Al cancelar tu suscripción, puedes solicitar la eliminación completa de tus datos escribiendo a nuestro contacto.</p>
+        <p><strong>Contacto:</strong> Para cualquier consulta sobre privacidad, escríbenos vía WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay fixed inset-0 z-50 hidden items-center justify-center bg-black/40 p-6 backdrop-blur-sm" id="modalTerminos">
+    <div class="modal-box w-full max-w-[600px] max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
+      <div class="modal-header mb-5 flex items-center justify-between">
+        <h3 class="text-lg font-bold text-[#1a1a2e]">Términos del Servicio</h3>
+        <button class="modal-close rounded-lg p-1.5 text-gray-400 transition-all hover:bg-violet-50 hover:text-violet-600">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body text-sm leading-relaxed text-gray-600">
+        <p class="mb-3">Al utilizar TiendaPOS, aceptas los siguientes términos y condiciones. Te recomendamos leerlos detenidamente antes de usar el sistema.</p>
+        <p class="mb-3"><strong>Uso del servicio:</strong> TiendaPOS es un sistema de punto de venta diseñado para gestionar operaciones comerciales. El usuario se compromete a usar el sistema de forma ética y conforme a las leyes aplicables en su país.</p>
+        <p class="mb-3"><strong>Responsabilidad fiscal:</strong> TiendaPOS facilita la gestión de datos formales de facturación, pero no es un sistema fiscal certificado. El usuario es el único responsable de cumplir con sus obligaciones tributarias y de asegurarse de que el uso del sistema cumple con la normativa local.</p>
+        <p class="mb-3"><strong>Disponibilidad:</strong> Nos esforzamos por mantener el servicio operativo 24/7, pero no garantizamos disponibilidad ininterrumpida. El servicio se provee "tal cual" y podrían ocurrir interrupciones programadas o no programadas.</p>
+        <p class="mb-3"><strong>Limitación de responsabilidad:</strong> TiendaPOS no se hace responsable por daños directos o indirectos derivados del uso del sistema, incluyendo pero no limitado a pérdida de datos, interrupción del negocio o incumplimientos fiscales.</p>
+        <p><strong>Modificaciones:</strong> Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán notificados a través del sistema.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay fixed inset-0 z-50 hidden items-center justify-center bg-black/40 p-6 backdrop-blur-sm" id="modalLegal">
+    <div class="modal-box w-full max-w-[600px] max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
+      <div class="modal-header mb-5 flex items-center justify-between">
+        <h3 class="text-lg font-bold text-[#1a1a2e]">Aviso Legal</h3>
+        <button class="modal-close rounded-lg p-1.5 text-gray-400 transition-all hover:bg-violet-50 hover:text-violet-600">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body text-sm leading-relaxed text-gray-600">
+        <p class="mb-3"><strong>Propiedad intelectual:</strong> TiendaPOS es un software desarrollado de forma independiente. Todos los derechos sobre el código, la marca y la documentación están reservados.</p>
+        <p class="mb-3"><strong>Exención de responsabilidad fiscal:</strong> Este sistema no está certificado por ninguna autoridad tributaria. Los datos fiscales ingresados son responsabilidad exclusiva del usuario. Recomendamos consultar con un contador o asesor fiscal para garantizar el cumplimiento de las obligaciones tributarias locales.</p>
+        <p class="mb-3"><strong>Protección de datos:</strong> Cumplimos con los estándares básicos de protección de datos. Los datos se almacenan en servidores de terceros (Neon.tech para base de datos, Render para la aplicación) que cuentan con sus propias certificaciones de seguridad.</p>
+        <p><strong>Jurisdicción:</strong> Este aviso legal se rige por las leyes de la República Bolivariana de Venezuela. Cualquier controversia será resuelta ante los tribunales competentes de Caracas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-8 w-full bg-violet-600 px-6 py-8 text-center">
+    <div class="mx-auto max-w-[1140px]">
+      <strong class="text-white/90">&copy; {year} TiendaPOS</strong>
+      <span class="text-white/70"> &mdash; </span>
+      <a href="#" class="footer-link font-semibold text-white/70 no-underline transition-colors hover:text-white" data-modal="modalPrivacidad">Privacidad</a>
+      <span class="text-white/50"> &middot; </span>
+      <a href="#" class="footer-link font-semibold text-white/70 no-underline transition-colors hover:text-white" data-modal="modalTerminos">Términos</a>
+      <span class="text-white/50"> &middot; </span>
+      <a href="#" class="footer-link font-semibold text-white/70 no-underline transition-colors hover:text-white" data-modal="modalLegal">Aviso legal</a>
+      <br />
+      <span class="mt-2 inline-block text-xs text-white/50">Backend en Render &middot; Base de datos en Neon</span>
+    </div>
+  </footer>
 </Layout>
+
+<style is:global>
+  .hamburger.active .ham-line:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .hamburger.active .ham-line:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .ham-line:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  @media (min-width: 768px) {
+    .mobile-menu, .nav-overlay {
+      display: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+function toggleMenu() {
+  document.getElementById('hamburgerBtn').classList.toggle('active');
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('navOverlay').classList.toggle('open');
+  document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+}
+
+function closeMenu() {
+  document.getElementById('hamburgerBtn').classList.remove('active');
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('navOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.remove('hidden');
+  document.getElementById(id).classList.add('flex');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.add('hidden');
+  document.getElementById(id).classList.remove('flex');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('hamburgerBtn').addEventListener('click', toggleMenu);
+
+  document.getElementById('closeMenuBtn').addEventListener('click', closeMenu);
+  document.getElementById('navOverlay').addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.mobile-link').forEach(function(el) {
+    el.addEventListener('click', closeMenu);
+  });
+
+  document.querySelectorAll('.modal-close').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var modal = this.closest('.modal-overlay');
+      if (modal) closeModal(modal.id);
+    });
+  });
+
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === this) closeModal(this.id);
+    });
+  });
+
+  document.querySelectorAll('.footer-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var modalId = this.getAttribute('data-modal');
+      if (modalId) openModal(modalId);
+    });
+  });
+});
+</script>
