@@ -252,9 +252,9 @@
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#valor" onclick="closeMenu()">Valor</a>
-        <a href="#features" onclick="closeMenu()">Funcionalidades</a>
-        <a href="#paises" onclick="closeMenu()">Países</a>
+        <a href="#por-que" onclick="closeMenu()">Por qué TiendaPOS</a>
+        <a href="#caracteristicas" onclick="closeMenu()">Características</a>
+        <a href="#cobertura" onclick="closeMenu()">Cobertura</a>
         <a href="#planes" onclick="closeMenu()">Planes</a>
     </div>
 
@@ -262,9 +262,9 @@
         <div class="nav-inner">
             <a href="#" class="logo">Tienda<span>POS</span></a>
             <div class="nav-links">
-                <a href="#valor">Valor</a>
-                <a href="#features">Funcionalidades</a>
-                <a href="#paises">Países</a>
+                <a href="#por-que">Por qué TiendaPOS</a>
+                <a href="#caracteristicas">Características</a>
+                <a href="#cobertura">Cobertura</a>
                 <a href="#planes">Planes</a>
             </div>
             <button class="hamburger" id="hamburgerBtn" aria-label="Menú" onclick="toggleMenu()">
@@ -304,8 +304,8 @@
             </div>
         </section>
 
-        <h2 id="valor">Diseñado para crecer</h2>
-        <p class="section-sub">Una arquitectura moderna que se adapta a la operación de tu negocio, sin importar el tamaño o el país.</p>
+        <h2 id="por-que">Por qué TiendaPOS</h2>
+        <p class="section-sub">Construido para negocios que necesitan un sistema robusto, flexible y adaptado a la realidad latinoamericana.</p>
 
         <section class="vp-grid">
             <div class="vp-card">
@@ -313,7 +313,7 @@
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                 </div>
                 <h3>Multi-tenant nativo</h3>
-                <p>Una sola instancia, múltiples tiendas completamente aisladas. Ideal para cadenas, franquicias o negocios independientes.</p>
+                <p>Una sola instancia, múltiples tiendas aisladas. Ideal para cadenas, franquicias o negocios independientes.</p>
             </div>
             <div class="vp-card">
                 <div class="icon">
@@ -338,7 +338,7 @@
             </div>
         </section>
 
-        <h2 id="features">Todo lo que necesitas para operar</h2>
+        <h2 id="caracteristicas">Todo lo que necesitas para operar</h2>
         <p class="section-sub">Módulos completos que cubren cada aspecto del día a día de tu punto de venta.</p>
 
         <section class="features-grid">
@@ -425,7 +425,7 @@
             </div>
         </section>
 
-        <h2 id="paises">Cobertura regional</h2>
+        <h2 id="cobertura">Cobertura regional</h2>
         <p class="section-sub">Regímenes fiscales, monedas y métodos de pago nativos para cada país.</p>
 
         <section class="countries-section">
