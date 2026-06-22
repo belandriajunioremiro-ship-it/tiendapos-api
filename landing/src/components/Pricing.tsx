@@ -1,4 +1,4 @@
-import { LuPlay, LuHome, LuStar, LuShield, LuCheck, LuArrowRight } from 'react-icons/lu';
+import { LuPlay, LuHouse, LuStar, LuShield, LuCheck, LuArrowRight } from 'react-icons/lu';
 
 const plans = [
   {
@@ -15,7 +15,7 @@ const plans = [
     variant: 'light',
     limits: ['200 productos', '5 usuarios', '2 almacenes', '2 cajas'],
     cta: 'Elegir Básico',
-    icon: LuHome,
+    icon: LuHouse,
   },
   {
     name: 'Pro', price: '$49', period: '/mes',
