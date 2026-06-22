@@ -3,227 +3,387 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TiendaPOS API</title>
+    <title>TiendaPOS — Sistema de Punto de Venta para Latinoamérica</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', sans-serif;
-            background: #000;
-            background: radial-gradient(ellipse at 50% 0%, rgba(180, 0, 0, 0.12) 0%, transparent 60%),
-                        radial-gradient(ellipse at 80% 50%, rgba(220, 20, 20, 0.06) 0%, transparent 50%),
-                        radial-gradient(ellipse at 20% 80%, rgba(140, 0, 0, 0.04) 0%, transparent 40%),
-                        #000;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #e2e8f0;
-            padding: 1rem;
-        }
-        .container {
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-        }
-        .badge {
-            display: inline-block;
-            padding: 0.35rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            background: rgba(34, 197, 94, 0.12);
-            color: #4ade80;
-            border: 1px solid rgba(34, 197, 94, 0.25);
-            margin-bottom: 1.5rem;
-        }
-        .badge::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #4ade80;
-            margin-right: 0.5rem;
-            vertical-align: middle;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        h1 {
-            font-size: clamp(2rem, 6vw, 3.75rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 0.75rem;
-            background: linear-gradient(to right, #f8fafc, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        h1 span {
-            background: linear-gradient(to right, #ef4444, #dc2626);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .subtitle {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: #64748b;
-            margin-bottom: 1.5rem;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #fafafa;
+            color: #1a1a2e;
             line-height: 1.6;
         }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; }
+        h2 { font-size: 2rem; text-align: center; margin-bottom: 0.75rem; }
+        h2 + p.section-sub { text-align: center; color: #64748b; max-width: 640px; margin: 0 auto 3rem; font-size: 1.05rem; }
+
+        /* Nav */
+        nav {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 0; flex-wrap: wrap; gap: 1rem;
+        }
+        nav .logo { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; }
+        nav .logo span { color: #7c3aed; }
+        nav .badge {
+            font-size: 0.7rem; padding: 0.3rem 0.75rem; border-radius: 9999px;
+            background: rgba(34, 197, 94, 0.1); color: #16a34a; font-weight: 600;
+            border: 1px solid rgba(34, 197, 94, 0.2); display: inline-flex; align-items: center; gap: 0.4rem;
+        }
+        nav .badge::before {
+            content: ''; width: 5px; height: 5px; border-radius: 50%;
+            background: #16a34a; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 0 4rem; text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            max-width: 820px; margin: 0 auto 1rem;
+        }
+        .hero h1 span { color: #7c3aed; }
+        .hero .sub {
+            font-size: 1.1rem; color: #475569; max-width: 680px;
+            margin: 0 auto 2rem; line-height: 1.7;
+        }
+        .hero-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.8rem 1.75rem; border-radius: 10px;
+            font-size: 0.95rem; font-weight: 600; text-decoration: none;
+            transition: all 0.2s; border: none; cursor: pointer;
+        }
+        .btn-primary {
+            background: #7c3aed; color: #fff;
+        }
+        .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
+        .btn-outline {
+            background: transparent; color: #1a1a2e;
+            border: 1.5px solid #e2e8f0;
+        }
+        .btn-outline:hover { border-color: #7c3aed; color: #7c3aed; }
+        .hero-stats {
+            display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+            margin-top: 3rem; padding-top: 2.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .hero-stats div { text-align: center; }
+        .hero-stats .num { font-size: 1.5rem; font-weight: 800; color: #7c3aed; }
+        .hero-stats .label { font-size: 0.8rem; color: #64748b; margin-top: 0.15rem; }
+
+        /* Value Proposition */
+        .value-prop {
+            padding: 4rem 0;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .vp-card {
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
+            padding: 1.75rem; transition: all 0.2s;
+        }
+        .vp-card:hover { border-color: #c4b5fd; box-shadow: 0 4px 20px rgba(124,58,237,0.06); }
+        .vp-card .icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: rgba(124,58,237,0.08); display: flex;
+            align-items: center; justify-content: center; margin-bottom: 1rem;
+            color: #7c3aed;
+        }
+        .vp-card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+        .vp-card p { font-size: 0.9rem; color: #64748b; line-height: 1.6; }
+
+        /* Features */
+        .features-section { padding: 3rem 0 4rem; }
+        .features-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1rem;
-            margin-bottom: 2.5rem;
-            text-align: left;
         }
-        .feature-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 10px;
-            padding: 1rem 1.25rem;
-            transition: border-color 0.2s;
+        .feature-card {
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
+            padding: 1.5rem; transition: all 0.2s;
         }
-        .feature-item:hover {
-            border-color: rgba(239, 68, 68, 0.2);
+        .feature-card:hover { border-color: #c4b5fd; }
+        .feature-card .icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            background: rgba(124,58,237,0.08);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 0.75rem; color: #7c3aed;
         }
-        .feature-item .label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: #ef4444;
-            margin-bottom: 0.3rem;
+        .feature-card h4 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+        .feature-card p { font-size: 0.85rem; color: #64748b; line-height: 1.6; }
+
+        /* Countries */
+        .countries-section { padding: 3rem 0; }
+        .country-chips {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
-        .feature-item .desc {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            line-height: 1.5;
+        .chip {
+            padding: 0.5rem 1rem; border-radius: 8px;
+            background: #fff; border: 1px solid #e2e8f0;
+            font-size: 0.85rem; font-weight: 600; color: #475569;
+            display: inline-flex; align-items: center; gap: 0.5rem;
         }
-        .disclaimer {
-            font-size: 0.8rem;
-            color: #475569;
-            margin-bottom: 2rem;
-            padding: 0.75rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.01);
+        .chip .flag { font-size: 1.1rem; }
+        .fiscal-note {
+            text-align: center; font-size: 0.8rem; color: #94a3b8;
+            max-width: 600px; margin: 0 auto;
         }
-        .disclaimer strong {
-            color: #64748b;
+
+        /* Plans */
+        .plans-section { padding: 3rem 0 4rem; }
+        .plans-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
         }
-        .url-card {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            font-size: 0.9rem;
-            color: #e2e8f0;
-            backdrop-filter: blur(8px);
-            transition: border-color 0.2s;
+        .plan-card {
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
+            padding: 1.75rem; text-align: center; transition: all 0.2s;
         }
-        .url-card:hover {
-            border-color: rgba(239, 68, 68, 0.3);
+        .plan-card:hover { border-color: #c4b5fd; }
+        .plan-card.highlight {
+            border-color: #7c3aed; box-shadow: 0 4px 24px rgba(124,58,237,0.1);
         }
-        .url-card svg {
-            flex-shrink: 0;
+        .plan-card .plan-name { font-size: 0.8rem; font-weight: 600; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.05em; }
+        .plan-card .plan-price { font-size: 2rem; font-weight: 800; margin: 0.5rem 0 0.25rem; }
+        .plan-card .plan-price span { font-size: 0.9rem; font-weight: 400; color: #94a3b8; }
+        .plan-card .plan-desc { font-size: 0.85rem; color: #64748b; margin-bottom: 1.25rem; }
+        .plan-card ul { list-style: none; font-size: 0.85rem; color: #475569; line-height: 2; }
+        .plan-card ul li::before { content: '✓ '; color: #7c3aed; font-weight: 700; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #e2e8f0; padding: 2rem 0;
+            font-size: 0.8rem; color: #94a3b8; text-align: center;
         }
-        .url-card code {
-            font-family: 'Inter', monospace;
-            color: #f87171;
-        }
-        .url-card .copy-btn {
-            background: none;
-            border: none;
-            color: #64748b;
-            cursor: pointer;
-            padding: 0.25rem;
-            display: flex;
-            align-items: center;
-            transition: color 0.2s;
-        }
-        .url-card .copy-btn:hover {
-            color: #e2e8f0;
-        }
-        .footer {
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            color: #475569;
-        }
-        .footer a {
-            color: #64748b;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            color: #94a3b8;
+        footer a { color: #64748b; text-decoration: none; }
+        footer a:hover { color: #7c3aed; }
+
+        @media (max-width: 600px) {
+            .hero { padding: 3rem 0 2rem; }
+            h2 { font-size: 1.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .plans-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="badge">Operativo</div>
-        <h1>Tienda<span>POS</span></h1>
-        <p class="subtitle">
-            Sistema de punto de venta multi-tenant con soporte para facturación electrónica,<br>
-            múltiples regímenes fiscales y control de inventario en tiempo real.
-        </p>
 
-        <div class="features">
-            <div class="feature-item">
-                <div class="label">Multimoneda</div>
-                <div class="desc">USD, VES, COP, MXN, ARS — tasas de cambio actualizables</div>
-            </div>
-            <div class="feature-item">
-                <div class="label">Regímenes Fiscales</div>
-                <div class="desc">RIF, NIT, RFC, RUC, CUIT — IVA/IGV por país (VE, CO, MX, EC, AR, PE, CL, BO, UY)</div>
-            </div>
-            <div class="feature-item">
-                <div class="label">Documentos</div>
-                <div class="desc">Facturas, cotizaciones, créditos, notas de débito, devoluciones</div>
-            </div>
-            <div class="feature-item">
-                <div class="label">Inventario</div>
-                <div class="desc">Stock en tiempo real, múltiples almacenes, lotes con FEFO, traslados</div>
-            </div>
-            <div class="feature-item">
-                <div class="label">POS + Caja</div>
-                <div class="desc">Pantalla de venta rápida, sesiones de caja, pagos mixtos, descuentos</div>
-            </div>
-            <div class="feature-item">
-                <div class="label">Suscripciones</div>
-                <div class="desc">Planes Trial, Básico, Pro, Premium con límites configurables</div>
-            </div>
-        </div>
+        <nav>
+            <div class="logo">Tienda<span>POS</span></div>
+            <span class="badge">Operativo</span>
+        </nav>
 
-        <div class="disclaimer">
-            <strong>Nota:</strong> Este sistema gestiona datos formales de facturación (RIF/NIT/RFC, razones sociales, impuestos) para cumplir con requisitos contables y fiscales de cada país, pero <strong>no es un sistema fiscal certificado</strong>. No realiza declaraciones de impuestos ni retenciones legales.
-        </div>
+        <section class="hero">
+            <h1>El sistema de punto de venta que <span>entiende Latinoamérica</span></h1>
+            <p class="sub">
+                Multi-tenant, multimoneda y multi país. Gestiona tu negocio con facturación electrónica,
+                control de inventario en tiempo real y reportes financieros, desde un solo lugar.
+            </p>
+            <div class="hero-actions">
+                <a href="https://github.com/belandriajunioremiro-ship-it/tiendapos-api" target="_blank" class="btn btn-outline">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    Código fuente
+                </a>
+                <a href="https://dashboard.render.com/web/srv-d8scgfojs32c73cv3sgg" target="_blank" class="btn btn-primary">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Dashboard
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div><div class="num">9</div><div class="label">Países soportados</div></div>
+                <div><div class="num">80+</div><div class="label">Tablas optimizadas</div></div>
+                <div><div class="num">112</div><div class="label">Endpoints API</div></div>
+                <div><div class="num">3</div><div class="label">Roles de usuario</div></div>
+            </div>
+        </section>
 
-        <div class="url-card">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-            <code>https://tiendapos-api.onrender.com</code>
-            <button class="copy-btn" onclick="navigator.clipboard.writeText('https://tiendapos-api.onrender.com')" title="Copiar URL">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                </svg>
-            </button>
-        </div>
+        <h2>¿Por qué TiendaPOS?</h2>
+        <p class="section-sub">Diseñado para negocios reales en mercados latinoamericanos, con la flexibilidad que tu operación exige.</p>
 
-        <div class="footer">
-            &copy; {{ date('Y') }} TiendaPOS &mdash; Backend en <a href="https://render.com" target="_blank">Render</a> &middot; Base de datos en <a href="https://neon.tech" target="_blank">Neon</a>
-        </div>
+        <section class="value-prop">
+            <div class="vp-card">
+                <div class="icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h3>Multi-tenant nativo</h3>
+                <p>Una sola instancia, múltiples tiendas aisladas. Ideal para cadenas o franquicias con operaciones independientes.</p>
+            </div>
+            <div class="vp-card">
+                <div class="icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3>Multimoneda real</h3>
+                <p>Tasas de cambio actualizables, pagos mixtos y registro contable en múltiples monedas. IGTF incluido para Venezuela.</p>
+            </div>
+            <div class="vp-card">
+                <div class="icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <h3>Facturación regional</h3>
+                <p>Soporte para RIF (VE), NIT (CO), RFC (MX), RUC (EC, PE), CUIT (AR) y más. IVA/IGV configurable por país.</p>
+            </div>
+            <div class="vp-card">
+                <div class="icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <h3>API-first</h3>
+                <p>Backend Laravel con 112 endpoints protegidos por Sanctum. Ideal para consumir desde cualquier frontend.</p>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>Todo lo que necesitas para operar</h2>
+            <p class="section-sub">Módulos completos que cubren cada aspecto de la operación de tu punto de venta.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </div>
+                    <h4>POS + Caja</h4>
+                    <p>Pantalla de venta rápida con búsqueda de productos, pagos mixtos, sesiones de caja con apertura y cierre controlado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h4>Facturación</h4>
+                    <p>Facturas, cotizaciones, notas de débito, devoluciones. Numeración correlativa por tipo de documento.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    </div>
+                    <h4>Inventario</h4>
+                    <p>Stock en tiempo real, múltiples almacenes, lotes con FEFO, traslados entre almacenes y alertas de stock bajo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>
+                    </div>
+                    <h4>Multimoneda</h4>
+                    <p>USD, VES, COP, MXN, ARS, PEN, CLP, BOB, UYU. Tasas de cambio con historial diario y cálculo de IGTF.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h4>Roles y permisos</h4>
+                    <p>Administrador, supervisor y cajero. 69 permisos granulares para controlar cada acción del sistema.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    </div>
+                    <h4>Créditos</h4>
+                    <p>Gestión de cuentas por cobrar, abonos y facturas a crédito con bloqueo pesimista para evitar sobreventa.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                    </div>
+                    <h4>Reportes</h4>
+                    <p>Ventas por período, rentabilidad, inventario, cuentas por cobrar. Dashboard con KPIs en tiempo real.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h4>Onboarding</h4>
+                    <p>Wizard de 4 pasos: crea tu cuenta, configura datos fiscales, prepara tu negocio y agrega tu primer producto.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                    </div>
+                    <h4>Suscripciones</h4>
+                    <p>Planes Trial, Básico, Pro y Premium con límites configurables por recurso: productos, usuarios, almacenes y cajas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="countries-section">
+            <h2>Diseñado para la región</h2>
+            <p class="section-sub">Regímenes fiscales, monedas y métodos de pago adaptados a cada país.</p>
+
+            <div class="country-chips">
+                <div class="chip"><span class="flag">🇻🇪</span> Venezuela</div>
+                <div class="chip"><span class="flag">🇨🇴</span> Colombia</div>
+                <div class="chip"><span class="flag">🇲🇽</span> México</div>
+                <div class="chip"><span class="flag">🇪🇨</span> Ecuador</div>
+                <div class="chip"><span class="flag">🇦🇷</span> Argentina</div>
+                <div class="chip"><span class="flag">🇵🇪</span> Perú</div>
+                <div class="chip"><span class="flag">🇨🇱</span> Chile</div>
+                <div class="chip"><span class="flag">🇧🇴</span> Bolivia</div>
+                <div class="chip"><span class="flag">🇺🇾</span> Uruguay</div>
+            </div>
+            <p class="fiscal-note">
+                Cada país con su identificación fiscal (RIF, NIT, RFC, RUC, CUIT), tasas de IVA/IGV y métodos de pago locales.
+                <br><strong>Nota:</strong> Este sistema gestiona datos formales de facturación, pero no es un sistema fiscal certificado para declaraciones de impuestos.
+            </p>
+        </section>
+
+        <section class="plans-section">
+            <h2>Planes flexibles</h2>
+            <p class="section-sub">Desde emprender hasta escalar. Elige el plan que se ajuste a tu operación.</p>
+
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-name">Trial</div>
+                    <div class="plan-price">$0 <span>/mes</span></div>
+                    <div class="plan-desc">14 días gratis. Sin compromiso.</div>
+                    <ul>
+                        <li>50 productos</li>
+                        <li>2 usuarios</li>
+                        <li>1 almacén</li>
+                        <li>1 caja</li>
+                    </ul>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-name">Básico</div>
+                    <div class="plan-price">$19 <span>/mes</span></div>
+                    <div class="plan-desc">Para negocios en crecimiento.</div>
+                    <ul>
+                        <li>200 productos</li>
+                        <li>5 usuarios</li>
+                        <li>2 almacenes</li>
+                        <li>2 cajas</li>
+                    </ul>
+                </div>
+                <div class="plan-card highlight">
+                    <div class="plan-name">Pro</div>
+                    <div class="plan-price">$49 <span>/mes</span></div>
+                    <div class="plan-desc">La opción más balanceada.</div>
+                    <ul>
+                        <li>1000 productos</li>
+                        <li>15 usuarios</li>
+                        <li>5 almacenes</li>
+                        <li>5 cajas</li>
+                    </ul>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-name">Premium</div>
+                    <div class="plan-price">$99 <span>/mes</span></div>
+                    <div class="plan-desc">Sin límites, sin preocupaciones.</div>
+                    <ul>
+                        <li>Productos ilimitados</li>
+                        <li>Usuarios ilimitados</li>
+                        <li>Almacenes ilimitados</li>
+                        <li>Cajas ilimitadas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; {{ date('Y') }} TiendaPOS &mdash; Backend en <a href="https://render.com" target="_blank">Render</a> &middot; Base de datos en <a href="https://neon.tech" target="_blank">Neon</a> &middot; <a href="https://github.com/belandriajunioremiro-ship-it/tiendapos-api" target="_blank">GitHub</a>
+        </footer>
+
     </div>
 </body>
 </html>
