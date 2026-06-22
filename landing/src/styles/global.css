@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "flag-icons/css/flag-icons.min.css";
 
-@import url('https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800');
-
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --color-violeta: #7c3aed;

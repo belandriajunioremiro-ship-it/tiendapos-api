@@ -1,4 +1,5 @@
 ---
+import Layout from '../layouts/Layout.astro';
 const countries = [
   { code: 've', name: 'Venezuela' },
   { code: 'co', name: 'Colombia' },
@@ -67,19 +68,7 @@ const plans = [
 ];
 ---
 
-<!doctype html>
-<html lang="es" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TiendaPOS — Tu negocio merece un POS sin fronteras</title>
-    <meta name="description" content="Sistema POS multi-tenant, multimoneda y multi-país para Latinoamérica. Facturación regional, API-first, suscripciones flexibles." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="stylesheet" href="/src/styles/global.css" />
-  </head>
-  <body class="m-0 font-sans text-gray-900 antialiased">
+<Layout>
 
     <!-- NAV -->
     <nav class="fixed top-0 z-50 flex w-full items-center justify-between bg-white/80 px-4 py-3 shadow-sm backdrop-blur-md lg:px-8" id="nav">
@@ -385,5 +374,4 @@ const plans = [
       });
     </script>
 
-  </body>
-</html>
+</Layout>
