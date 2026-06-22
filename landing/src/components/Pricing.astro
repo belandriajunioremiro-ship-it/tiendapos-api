@@ -6,7 +6,7 @@ const plans = [
     variant: 'light',
     limits: ['50 productos', '2 usuarios', '1 almacén', '1 caja'],
     cta: 'Comenzar prueba',
-    icon: 'play',
+    icon: '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>',
   },
   {
     name: 'Básico', price: '$19', period: '/mes',
@@ -14,7 +14,7 @@ const plans = [
     variant: 'light',
     limits: ['200 productos', '5 usuarios', '2 almacenes', '2 cajas'],
     cta: 'Elegir Básico',
-    icon: 'home',
+    icon: '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
   },
   {
     name: 'Pro', price: '$49', period: '/mes',
@@ -22,7 +22,7 @@ const plans = [
     variant: 'popular',
     limits: ['1,000 productos', '15 usuarios', '5 almacenes', '5 cajas'],
     cta: 'Elegir Pro',
-    icon: 'star',
+    icon: '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>',
   },
   {
     name: 'Premium', price: '$99', period: '/mes',
@@ -30,61 +30,59 @@ const plans = [
     variant: 'premium',
     limits: ['Productos ilimitados', 'Usuarios ilimitados', 'Almacenes ilimitados', 'Cajas ilimitadas'],
     cta: 'Elegir Premium',
-    icon: 'shield',
+    icon: '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
   },
 ];
 ---
 
-<h2 id="planes" class="scroll-mt-24 text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#1a1a2e] reveal">
-  Un plan para cada <span class="text-violet-600">realidad</span>
-</h2>
-<p class="mx-auto mb-14 max-w-[580px] px-4 text-center text-base leading-relaxed text-gray-500 reveal">
-  Desde emprender hasta escalar. Todos incluyen 14 días de prueba gratis.
-</p>
-
-<section class="mb-0 grid grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] items-start gap-5 reveal">
-  {plans.map((p) => {
-    const isPremium = p.variant === 'popular';
-    const isDark = p.variant === 'premium';
-    return (
-    <div class={`group relative flex flex-col overflow-hidden rounded-2xl px-6 py-8 text-center transition-all duration-300 hover:-translate-y-1 ${isDark ? 'border border-violet-500/20 bg-gradient-to-br from-[#1e1b2e] to-[#2d1f3e] shadow-lg shadow-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20' : isPremium ? 'border-2 border-violet-500 bg-white shadow-lg shadow-violet-500/15 scale-[1.03] hover:shadow-xl hover:shadow-violet-500/25' : 'border border-gray-200 bg-white shadow-sm hover:shadow-lg'}`}>
-      {isPremium && <div class="absolute right-[-28px] top-3 rotate-45 bg-violet-600 px-8 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">Popular</div>}
-      {isDark && <div class="absolute right-[-28px] top-3 rotate-45 bg-gradient-to-r from-amber-400 to-amber-500 px-8 py-0.5 text-[10px] font-bold uppercase tracking-wider text-black shadow-sm">Premium</div>}
-
-      <div class={`mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl transition-all group-hover:scale-110 ${isDark ? 'bg-white/10 text-violet-300' : isPremium ? 'bg-violet-100 text-violet-600' : 'bg-gray-100 text-gray-500'}`}>
-        {p.icon === 'play' && <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>}
-        {p.icon === 'home' && <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>}
-        {p.icon === 'star' && <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>}
-        {p.icon === 'shield' && <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>}
-      </div>
-
-      <div class={`mb-1 text-xs font-bold uppercase tracking-widest ${isDark ? 'text-violet-300' : 'text-violet-600'}`}>{p.name}</div>
-
-      <div class={`mb-1 text-5xl font-black tracking-tight ${isDark ? 'text-gray-50' : 'text-[#1a1a2e]'}`}>
-        {p.price} <span class="text-lg font-normal text-gray-400">{p.period}</span>
-      </div>
-      <div class={`mx-auto mb-5 max-w-[200px] border-b pb-4 text-sm ${isDark ? 'border-white/10 text-gray-400' : 'border-gray-100 text-gray-500'}`}>{p.subtitle}</div>
-
-      <ul class="mx-auto mb-6 max-w-[200px] list-none text-left text-sm leading-8">
-        {p.limits.map((item) => (
-          <li class="flex items-center gap-2">
-            <span class={`flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full ${isDark ? 'bg-violet-300/20 text-violet-300' : isPremium ? 'bg-violet-100 text-violet-600' : 'bg-gray-200/60 text-gray-500'}`}>
-              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3" /></svg>
-            </span>
-            <span class={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{item}</span>
-          </li>
-        ))}
-      </ul>
-
-      <a
-        href={`https://wa.me/584247253544?text=Hola%2C%20quiero%20el%20plan%20${encodeURIComponent(p.name)}%20de%20TiendaPOS`}
-        target="_blank"
-        class={`mt-auto inline-flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold no-underline transition-all ${isDark ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-black shadow-sm hover:shadow-md hover:shadow-amber-400/30' : isPremium ? 'bg-gradient-to-r from-violet-500 to-violet-700 text-white shadow-sm hover:shadow-md hover:shadow-violet-500/30' : 'border-2 border-gray-200 text-gray-600 hover:border-violet-300 hover:text-violet-700'}`}
-      >
-        {p.cta}
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
+<section id="planes" class="scroll-mt-24 bg-gray-50 px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-16 text-center reveal">
+      <div class="mb-3 text-sm font-bold uppercase tracking-widest text-violet-600">Planes</div>
+      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        Un plan para cada <span class="gradient-text">realidad</span>
+      </h2>
+      <p class="mx-auto max-w-lg text-lg leading-relaxed text-gray-500">
+        Desde emprender hasta escalar. Todos incluyen 14 días de prueba gratis.
+      </p>
     </div>
-    );
-  })}
+
+    <div class="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {plans.map((p) => {
+        const isPop = p.variant === 'popular';
+        const isPrem = p.variant === 'premium';
+        return (
+        <div class={`reveal relative flex flex-col rounded-2xl p-7 text-center transition-all duration-300 hover:-translate-y-1 ${isPrem ? 'bg-gradient-to-br from-violet-900 to-violet-800 shadow-2xl shadow-violet-500/20' : isPop ? 'border-2 border-violet-500 bg-white shadow-xl shadow-violet-500/10' : 'border border-gray-200 bg-white shadow-sm hover:shadow-lg'}`}>
+          {isPop && <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-violet-600 px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-white">Popular</div>}
+          {isPrem && <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-black">Premium</div>}
+
+          <div class={`mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${isPrem ? 'bg-white/10 text-violet-300' : isPop ? 'bg-violet-100 text-violet-600' : 'bg-gray-100 text-gray-500'}`}>
+            <Fragment set:html={p.icon} />
+          </div>
+
+          <div class={`mb-1 text-xs font-bold uppercase tracking-widest ${isPrem ? 'text-violet-300' : 'text-violet-600'}`}>{p.name}</div>
+
+          <div class={`mb-1 text-5xl font-black tracking-tight ${isPrem ? 'text-white' : 'text-gray-900'}`}>
+            {p.price}<span class="text-base font-normal text-gray-400">{p.period}</span>
+          </div>
+          <div class={`mb-5 text-sm ${isPrem ? 'text-violet-300' : 'text-gray-500'}`}>{p.subtitle}</div>
+
+          <ul class="mx-auto mb-6 w-full max-w-[200px] list-none text-left text-sm leading-8">
+            {p.limits.map((item) => (
+              <li class="flex items-center gap-2.5">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class={isPrem ? 'text-violet-400' : isPop ? 'text-violet-500' : 'text-gray-400'}><polyline points="2 5 4 7 8 3" /></svg>
+                <span class={`font-medium ${isPrem ? 'text-gray-300' : 'text-gray-700'}`}>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a href={`https://wa.me/584247253544?text=Hola%2C%20quiero%20el%20plan%20${encodeURIComponent(p.name)}%20de%20TiendaPOS`} target="_blank" class={`mt-auto inline-flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold no-underline transition-all ${isPrem ? 'bg-gradient-to-r from-amber-400 to-amber-500 text-black hover:shadow-lg hover:shadow-amber-400/30' : isPop ? 'bg-violet-600 text-white hover:bg-violet-700 hover:shadow-lg hover:shadow-violet-500/25' : 'border-2 border-gray-200 text-gray-600 hover:border-violet-400 hover:text-violet-700'}`}>
+            {p.cta}
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+        );
+      })}
+    </div>
+  </div>
 </section>

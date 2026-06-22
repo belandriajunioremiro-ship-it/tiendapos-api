@@ -1,119 +1,87 @@
-<h2 id="caracteristicas" class="scroll-mt-24 text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-[#1a1a2e] reveal">
-  9 módulos. <span class="text-violet-600">0 complicaciones.</span>
-</h2>
-<p class="mx-auto mb-14 max-w-[580px] px-4 text-center text-base leading-relaxed text-gray-500 reveal">
-  Cada aspecto de tu punto de venta cubierto por un módulo independiente pero conectado.
-</p>
+---
+const features = [
+  {
+    icon: 'monitor',
+    title: 'POS + Caja',
+    desc: 'Venta rápida con pagos mixtos, descuentos y cierre de caja automático.',
+  },
+  {
+    icon: 'file-text',
+    title: 'Facturación regional',
+    desc: 'Facturas, notas y devoluciones con RIF, NIT, RFC, RUC o CUIT según tu país.',
+  },
+  {
+    icon: 'wallet',
+    title: 'Créditos y cobros',
+    desc: 'Cuentas por cobrar, abonos parciales y bloqueo automático por sobreventa.',
+  },
+  {
+    icon: 'package',
+    title: 'Inventario inteligente',
+    desc: 'Stock en tiempo real, multi-almacén, lotes FEFO y alertas de bajo stock.',
+  },
+  {
+    icon: 'globe',
+    title: '9 monedas nativas',
+    desc: 'USD, VES, COP, MXN, ARS, PEN, CLP, BOB, UYU. IGTF incluido para Venezuela.',
+  },
+  {
+    icon: 'shield',
+    title: 'Roles y permisos',
+    desc: 'Admin, supervisor, cajero con 69 permisos granulares. Cada quien ve lo suyo.',
+  },
+  {
+    icon: 'bar-chart',
+    title: 'Reportes en tiempo real',
+    desc: 'Ventas, rentabilidad, inventario y KPIs desde cualquier dispositivo.',
+  },
+  {
+    icon: 'credit-card',
+    title: 'Suscripciones SaaS',
+    desc: '4 planes con límites automáticos. Trial gratis por 14 días, sin tarjeta.',
+  },
+  {
+    icon: 'zap',
+    title: 'Onboarding en 4 pasos',
+    desc: 'Cuenta, datos fiscales, configuración y primer producto en minutos.',
+  },
+];
 
-<section class="mb-0 grid grid-cols-1 gap-3 md:grid-cols-3 reveal">
-  <!-- Category: Gestión de ventas -->
-  <div class="col-span-1 flex items-center gap-3 md:col-span-3">
-    <span class="h-px flex-1 bg-gray-200" />
-    <span class="text-[11px] font-semibold uppercase tracking-widest text-violet-600">Gestión de ventas</span>
-    <span class="h-px flex-1 bg-gray-200" />
-  </div>
+const icons = {
+  'monitor': '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+  'file-text': '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+  'wallet': '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>',
+  'package': '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.5" x2="7.5" y2="9.5"/><path d="M20 16.5V7a2 2 0 0 0-1.5-1.93L12 3 5.5 5.07A2 2 0 0 0 4 7v9.5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2z"/><path d="M3 8l9 5 9-5"/></svg>',
+  'globe': '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+  'shield': '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  'bar-chart': '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>',
+  'credit-card': '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>',
+  'zap': '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+};
+---
 
-  <div class="flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
-    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="20" x2="18" y2="20"/><line x1="12" y1="20" x2="12" y2="16"/><rect x="8" y="10" width="8" height="4" rx="1"/></svg>
+<section id="funciones" class="scroll-mt-24 bg-white px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-16 max-w-2xl reveal">
+      <div class="mb-3 text-sm font-bold uppercase tracking-widest text-violet-600">Funcionalidades</div>
+      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        Todo lo que necesitas para <span class="gradient-text">vender sin fronteras</span>
+      </h2>
+      <p class="text-lg leading-relaxed text-gray-500">
+        9 módulos integrados que cubren cada aspecto de tu punto de venta, con facturación fiscal lista para cada país.
+      </p>
     </div>
-    <div>
-      <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">POS + Caja</h4>
-      <p class="text-sm leading-relaxed text-gray-500">Venta rápida, apertura y cierre de caja, pagos mixtos y descuentos.</p>
-    </div>
-  </div>
 
-  <div class="flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
-    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-    </div>
-    <div>
-      <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Facturación</h4>
-      <p class="text-sm leading-relaxed text-gray-500">Facturas, notas, devoluciones y numeración correlativa.</p>
-    </div>
-  </div>
-
-  <div class="flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
-    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-    </div>
-    <div>
-      <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Créditos</h4>
-      <p class="text-sm leading-relaxed text-gray-500">Cuentas por cobrar, abonos y bloqueo por sobreventa.</p>
-    </div>
-  </div>
-
-  <!-- Category: Operaciones -->
-  <div class="col-span-1 flex items-center gap-3 md:col-span-3">
-    <span class="h-px flex-1 bg-gray-200" />
-    <span class="text-[11px] font-semibold uppercase tracking-widest text-indigo-600">Operaciones</span>
-    <span class="h-px flex-1 bg-gray-200" />
-  </div>
-
-  <div class="flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
-    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-    </div>
-    <div>
-      <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Inventario</h4>
-      <p class="text-sm leading-relaxed text-gray-500">Stock en tiempo real, múltiples almacenes, lotes FEFO y alertas.</p>
-    </div>
-  </div>
-
-  <div class="flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
-    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-    </div>
-    <div>
-      <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Multimoneda</h4>
-      <p class="text-sm leading-relaxed text-gray-500">USD, VES, COP, MXN, ARS, PEN, CLP, BOB, UYU. IGTF incluido.</p>
-    </div>
-  </div>
-
-  <div class="flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
-    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    </div>
-    <div>
-      <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Roles y permisos</h4>
-      <p class="text-sm leading-relaxed text-gray-500">Admin, supervisor, cajero. 69 permisos granulares.</p>
-    </div>
-  </div>
-
-  <!-- Category: Inteligencia -->
-  <div class="col-span-1 flex items-center gap-3 md:col-span-3">
-    <span class="h-px flex-1 bg-gray-200" />
-    <span class="text-[11px] font-semibold uppercase tracking-widest text-emerald-600">Inteligencia</span>
-    <span class="h-px flex-1 bg-gray-200" />
-  </div>
-
-  <div class="flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
-    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
-    </div>
-    <div>
-      <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Reportes</h4>
-      <p class="text-sm leading-relaxed text-gray-500">Ventas, rentabilidad, inventario y KPIs en tiempo real.</p>
-    </div>
-  </div>
-
-  <div class="flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
-    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-    </div>
-    <div>
-      <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Suscripciones</h4>
-      <p class="text-sm leading-relaxed text-gray-500">Planes Trial, Básico, Pro, Premium con límites ajustables.</p>
-    </div>
-  </div>
-
-  <div class="flex gap-3 rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-violet-300 hover:shadow-sm">
-    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100/80 text-violet-600">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-    </div>
-    <div>
-      <h4 class="mb-0.5 text-sm font-bold text-[#1a1a2e]">Onboarding</h4>
-      <p class="text-sm leading-relaxed text-gray-500">Wizard de 4 pasos: cuenta, datos fiscales, configuración y primer producto.</p>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map((f, i) => (
+        <div class={`reveal reveal-delay-${(i % 3) + 1} group rounded-2xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:border-violet-200 hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1`}>
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-violet-50 text-violet-600 transition-colors group-hover:bg-violet-600 group-hover:text-white">
+            <Fragment set:html={icons[f.icon]} />
+          </div>
+          <h3 class="mb-2 text-base font-bold text-gray-900">{f.title}</h3>
+          <p class="text-sm leading-relaxed text-gray-500">{f.desc}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>

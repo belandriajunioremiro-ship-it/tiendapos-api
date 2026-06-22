@@ -1,0 +1,74 @@
+---
+const faqs = [
+  {
+    q: '¿Qué es TiendaPOS?',
+    a: 'TiendaPOS es un sistema de punto de venta (POS) en la nube diseñado para Latinoamérica. Permite vender, facturar, gestionar inventario y controlar créditos en 9 países con sus respectivas monedas y regulaciones fiscales.',
+  },
+  {
+    q: '¿En qué países funciona?',
+    a: 'Actualmente cubrimos Venezuela, Colombia, México, Ecuador, Argentina, Perú, Chile, Bolivia y Uruguay. Cada país tiene configuración automática de impuestos (IVA/IGV), moneda local y datos de identificación fiscal (RIF, NIT, RFC, RUC, CUIT).',
+  },
+  {
+    q: '¿Puedo probar gratis?',
+    a: 'Sí. Todos los planes incluyen 14 días de prueba gratuita sin necesidad de tarjeta de crédito. Al registrarte obtienes acceso inmediato al plan Trial con 50 productos, 2 usuarios, 1 almacén y 1 caja.',
+  },
+  {
+    q: '¿Qué monedas acepta?',
+    a: 'USD, VES (Bolívares), COP (Pesos colombianos), MXN (Pesos mexicanos), ARS (Pesos argentinos), PEN (Soles), CLP (Pesos chilenos), BOB (Bolivianos) y UYU (Pesos uruguayos). Para Venezuela incluye el cálculo automático de IGTF (3%).',
+  },
+  {
+    q: '¿Mis datos están seguros?',
+    a: 'Sí. Toda la comunicación es cifrada vía HTTPS. Los tokens de autenticación se almacenan de forma segura con Sanctum. La base de datos está en Neon.tech con certificaciones de seguridad y backups automáticos.',
+  },
+  {
+    q: '¿Puedo cambiar de plan en cualquier momento?',
+    a: 'Sí. Puedes upgrade o downgrade entre planes Básico, Pro y Premium cuando lo necesites. Los cambios se reflejan inmediatamente y los límites se ajustan automáticamente.',
+  },
+  {
+    q: '¿Qué es el IGTF y cómo lo maneja?',
+    a: 'El IGTF (Impuesto a las Grandes Transacciones Financieras) es un 3% aplicable en Venezuela sobre pagos en divisas. TiendaPOS lo calcula automáticamente en cada venta que requiera este impuesto.',
+  },
+  {
+    q: '¿Cuánto tarda la configuración inicial?',
+    a: 'Menos de 5 minutos. El onboarding es un wizard de 4 pasos: crear cuenta, seleccionar país (auto-configura impuestos y moneda), ajustar negocio y cargar el primer producto.',
+  },
+];
+---
+
+<section id="faq" class="scroll-mt-24 bg-white px-6 py-24">
+  <div class="mx-auto max-w-3xl">
+    <div class="mb-16 text-center reveal">
+      <div class="mb-3 text-sm font-bold uppercase tracking-widest text-violet-600">FAQ</div>
+      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        Preguntas <span class="gradient-text">frecuentes</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3 reveal">
+      {faqs.map((f, i) => (
+        <div class="faq-item rounded-xl border border-gray-100 bg-white transition-all hover:border-gray-200" data-faq={i}>
+          <button class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-sm font-semibold text-gray-900">{f.q}</span>
+            <svg class="faq-chevron flex-shrink-0 text-gray-400" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer px-6 text-sm leading-relaxed text-gray-500">
+            {f.a}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(function(){
+  document.querySelectorAll('.faq-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = this.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el){ el.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>

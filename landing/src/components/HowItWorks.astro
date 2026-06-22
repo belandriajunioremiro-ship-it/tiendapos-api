@@ -1,0 +1,100 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Crea tu cuenta',
+    desc: 'Regístrate en segundos. Sin tarjeta de crédito. Obtén acceso inmediato con tu trial de 14 días.',
+    icon: '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  },
+  {
+    num: '02',
+    title: 'Configura tu país',
+    desc: 'Selecciona tu país y el sistema auto-configura impuestos (IVA/IGV), moneda y datos fiscales.',
+    icon: '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+  },
+  {
+    num: '03',
+    title: 'Ajusta tu negocio',
+    desc: 'Define almacenes, cajas y usuarios. Asigna roles y permisos según tu equipo.',
+    icon: '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
+  },
+  {
+    num: '04',
+    title: 'Empieza a vender',
+    desc: 'Carga tu primer producto y comienza a facturar. Tu POS está listo en menos de 5 minutos.',
+    icon: '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  },
+];
+
+const countries = [
+  { flag: '🇻🇪', name: 'Venezuela', id: 'RIF', tax: 'IVA 16%', currency: 'USD / VES' },
+  { flag: '🇨🇴', name: 'Colombia', id: 'NIT', tax: 'IVA 19%', currency: 'COP' },
+  { flag: '🇲🇽', name: 'México', id: 'RFC', tax: 'IVA 16%', currency: 'MXN' },
+  { flag: '🇪🇨', name: 'Ecuador', id: 'RUC', tax: 'IVA 12%', currency: 'USD' },
+  { flag: '🇦🇷', name: 'Argentina', id: 'CUIT', tax: 'IVA 21%', currency: 'ARS' },
+  { flag: '🇵🇪', name: 'Perú', id: 'RUC', tax: 'IGV 18%', currency: 'PEN' },
+  { flag: '🇨🇱', name: 'Chile', id: 'RUT', tax: 'IVA 19%', currency: 'CLP' },
+  { flag: '🇧🇴', name: 'Bolivia', id: 'NIT', tax: 'IVA 13%', currency: 'BOB' },
+  { flag: '🇺🇾', name: 'Uruguay', id: 'RUT', tax: 'IVA 22%', currency: 'UYU' },
+];
+---
+
+<!-- How it works -->
+<section class="bg-gray-50 px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-16 text-center reveal">
+      <div class="mb-3 text-sm font-bold uppercase tracking-widest text-violet-600">Cómo funciona</div>
+      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        En 4 pasos estás <span class="gradient-text">vendiendo</span>
+      </h2>
+      <p class="mx-auto max-w-lg text-lg leading-relaxed text-gray-500">
+        Onboarding guiado que auto-configura impuestos, moneda y datos fiscales según tu país.
+      </p>
+    </div>
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((s, i) => (
+        <div class={`reveal reveal-delay-${i + 1} relative text-center`}>
+          <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-600 text-white shadow-lg shadow-violet-500/25">
+            <Fragment set:html={s.icon} />
+          </div>
+          <div class="mb-1 text-xs font-bold uppercase tracking-widest text-violet-400">{s.num}</div>
+          <h3 class="mb-2 text-lg font-bold text-gray-900">{s.title}</h3>
+          <p class="text-sm leading-relaxed text-gray-500">{s.desc}</p>
+          {i < 3 && <div class="absolute right-0 top-7 hidden h-px w-8 bg-violet-200 lg:block" />}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Countries -->
+<section id="paises" class="scroll-mt-24 bg-white px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-16 text-center reveal">
+      <div class="mb-3 text-sm font-bold uppercase tracking-widest text-violet-600">Cobertura fiscal</div>
+      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        Facturación local en <span class="gradient-text">9 países</span>
+      </h2>
+      <p class="mx-auto max-w-lg text-lg leading-relaxed text-gray-500">
+        Regímenes fiscales, monedas y datos de identificación nativos para cada país.
+      </p>
+    </div>
+
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {countries.map((c, i) => (
+        <div class={`reveal reveal-delay-${(i % 3) + 1} flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4 transition-all hover:border-violet-200 hover:shadow-md`}>
+          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gray-50 text-2xl">{c.flag}</div>
+          <div class="min-w-0">
+            <div class="text-sm font-bold text-gray-900">{c.name}</div>
+            <div class="text-xs text-gray-400">{c.id} · {c.tax} · {c.currency}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 px-5 py-3 text-center text-sm text-amber-700 reveal">
+      <strong>Nota:</strong> TiendaPOS gestiona datos formales de facturación, pero <strong>no es un sistema fiscal certificado</strong>.
+    </div>
+  </div>
+</section>
