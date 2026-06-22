@@ -65,23 +65,30 @@
         /* Mobile overlay + menu */
         .nav-overlay {
             display: none; position: fixed; inset: 0; z-index: 90;
-            background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s;
+            background: rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.35s;
         }
         .nav-overlay.open { display: block; opacity: 1; }
         .mobile-menu {
-            position: fixed; top: 0; left: 0; bottom: 0; z-index: 95;
-            width: 270px; background: #fff;
-            transform: translateX(-100%); transition: transform 0.3s ease;
-            padding: 5rem 2rem 2rem;
-            box-shadow: 4px 0 24px rgba(0,0,0,0.08);
+            position: fixed; inset: 0; z-index: 95;
+            background: rgba(255,255,255,0.98); backdrop-filter: blur(16px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 0.5rem;
+            opacity: 0; visibility: hidden; transition: all 0.35s ease;
         }
-        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu.open { opacity: 1; visibility: visible; }
+        .mobile-menu .close-btn {
+            position: absolute; top: 1rem; right: 1.25rem;
+            background: none; border: none; cursor: pointer;
+            padding: 0.5rem; border-radius: 10px; color: #94a3b8;
+            transition: all 0.2s;
+        }
+        .mobile-menu .close-btn:hover { background: rgba(124,58,237,0.06); color: #7c3aed; }
         .mobile-menu a {
-            display: block; font-size: 1rem; font-weight: 600; color: #1a1a2e;
-            text-decoration: none; padding: 0.75rem 0;
-            border-bottom: 1px solid #f1f5f9; transition: color 0.2s;
+            font-size: 1.2rem; font-weight: 600; color: #1a1a2e;
+            text-decoration: none; padding: 0.8rem 2rem; border-radius: 12px;
+            transition: all 0.2s; letter-spacing: -0.01em;
         }
-        .mobile-menu a:hover { color: #7c3aed; }
+        .mobile-menu a:hover { background: rgba(124,58,237,0.06); color: #7c3aed; }
 
         .hero {
             padding: clamp(3rem, 6vw, 5.5rem) 0 2.5rem; text-align: center;
@@ -243,6 +250,9 @@
         @media (min-width: 769px) {
             .mobile-menu, .nav-overlay { display: none !important; }
         }
+        @media (max-width: 380px) {
+            .mobile-menu a { font-size: 1rem; padding: 0.7rem 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -252,9 +262,12 @@
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="closeMenu()" aria-label="Cerrar">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
         <a href="#por-que" onclick="closeMenu()">Por qué TiendaPOS</a>
         <a href="#caracteristicas" onclick="closeMenu()">Características</a>
-        <a href="#cobertura" onclick="closeMenu()">Cobertura</a>
+        <a href="#paises" onclick="closeMenu()">Países</a>
         <a href="#planes" onclick="closeMenu()">Planes</a>
     </div>
 
@@ -264,7 +277,7 @@
             <div class="nav-links">
                 <a href="#por-que">Por qué TiendaPOS</a>
                 <a href="#caracteristicas">Características</a>
-                <a href="#cobertura">Cobertura</a>
+                <a href="#paises">Países</a>
                 <a href="#planes">Planes</a>
             </div>
             <button class="hamburger" id="hamburgerBtn" aria-label="Menú" onclick="toggleMenu()">
@@ -425,8 +438,8 @@
             </div>
         </section>
 
-        <h2 id="cobertura">Cobertura regional</h2>
-        <p class="section-sub">Regímenes fiscales, monedas y métodos de pago nativos para cada país.</p>
+        <h2 id="paises">Países que soporta TiendaPOS</h2>
+        <p class="section-sub">Regímenes fiscales, monedas y métodos de pago nativos para cada país de la región.</p>
 
         <section class="countries-section">
             <div class="country-chips">
