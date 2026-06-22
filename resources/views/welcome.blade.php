@@ -11,9 +11,9 @@
         body {
             font-family: 'Inter', sans-serif;
             background: #000;
-            background: radial-gradient(ellipse at 50% 0%, rgba(180, 0, 0, 0.15) 0%, transparent 60%),
-                        radial-gradient(ellipse at 80% 50%, rgba(220, 20, 20, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 20% 80%, rgba(140, 0, 0, 0.06) 0%, transparent 40%),
+            background: radial-gradient(ellipse at 50% 0%, rgba(180, 0, 0, 0.12) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 50%, rgba(220, 20, 20, 0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 20% 80%, rgba(140, 0, 0, 0.04) 0%, transparent 40%),
                         #000;
             min-height: 100vh;
             display: flex;
@@ -74,8 +74,50 @@
         .subtitle {
             font-size: clamp(1rem, 2vw, 1.25rem);
             color: #64748b;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        .feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            transition: border-color 0.2s;
+        }
+        .feature-item:hover {
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+        .feature-item .label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #ef4444;
+            margin-bottom: 0.3rem;
+        }
+        .feature-item .desc {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #475569;
+            margin-bottom: 2rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.01);
+        }
+        .disclaimer strong {
+            color: #64748b;
         }
         .url-card {
             display: inline-flex;
@@ -85,9 +127,8 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #e2e8f0;
-            margin-bottom: 3rem;
             backdrop-filter: blur(8px);
             transition: border-color 0.2s;
         }
@@ -114,25 +155,6 @@
         .url-card .copy-btn:hover {
             color: #e2e8f0;
         }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.04);
-            color: #cbd5e1;
-        }
-        .btn:hover {
-            border-color: rgba(239, 68, 68, 0.3);
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-1px);
-        }
         .footer {
             margin-top: 3rem;
             font-size: 0.8rem;
@@ -149,12 +171,43 @@
 </head>
 <body>
     <div class="container">
-        <div class="badge">En línea</div>
-        <h1>Tienda<span>POS</span> API</h1>
+        <div class="badge">Operativo</div>
+        <h1>Tienda<span>POS</span></h1>
         <p class="subtitle">
-            API robusta y escalable para la gestión de puntos de venta.<br>
-            Multi-tenant &middot; Multi-país &middot; Tiempo real
+            Sistema de punto de venta multi-tenant con soporte para facturación electrónica,<br>
+            múltiples regímenes fiscales y control de inventario en tiempo real.
         </p>
+
+        <div class="features">
+            <div class="feature-item">
+                <div class="label">Multimoneda</div>
+                <div class="desc">USD, VES, COP, MXN, ARS — tasas de cambio actualizables</div>
+            </div>
+            <div class="feature-item">
+                <div class="label">Regímenes Fiscales</div>
+                <div class="desc">RIF, NIT, RFC, RUC, CUIT — IVA/IGV por país (VE, CO, MX, EC, AR, PE, CL, BO, UY)</div>
+            </div>
+            <div class="feature-item">
+                <div class="label">Documentos</div>
+                <div class="desc">Facturas, cotizaciones, créditos, notas de débito, devoluciones</div>
+            </div>
+            <div class="feature-item">
+                <div class="label">Inventario</div>
+                <div class="desc">Stock en tiempo real, múltiples almacenes, lotes con FEFO, traslados</div>
+            </div>
+            <div class="feature-item">
+                <div class="label">POS + Caja</div>
+                <div class="desc">Pantalla de venta rápida, sesiones de caja, pagos mixtos, descuentos</div>
+            </div>
+            <div class="feature-item">
+                <div class="label">Suscripciones</div>
+                <div class="desc">Planes Trial, Básico, Pro, Premium con límites configurables</div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <strong>Nota:</strong> Este sistema gestiona datos formales de facturación (RIF/NIT/RFC, razones sociales, impuestos) para cumplir con requisitos contables y fiscales de cada país, pero <strong>no es un sistema fiscal certificado</strong>. No realiza declaraciones de impuestos ni retenciones legales.
+        </div>
 
         <div class="url-card">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -169,7 +222,7 @@
         </div>
 
         <div class="footer">
-            &copy; {{ date('Y') }} TiendaPOS API &mdash; Desplegado en <a href="https://render.com" target="_blank">Render</a> &middot; Base de datos en <a href="https://neon.tech" target="_blank">Neon</a>
+            &copy; {{ date('Y') }} TiendaPOS &mdash; Backend en <a href="https://render.com" target="_blank">Render</a> &middot; Base de datos en <a href="https://neon.tech" target="_blank">Neon</a>
         </div>
     </div>
 </body>
