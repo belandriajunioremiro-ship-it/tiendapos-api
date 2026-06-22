@@ -64,58 +64,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Mockup illustration */}
-      <div className="relative mx-auto mt-14 max-w-[800px] px-4">
-        <div className="relative overflow-hidden rounded-2xl border border-gray-200/60 bg-white shadow-xl shadow-gray-200/50">
-          <div className="flex items-center gap-1.5 border-b border-gray-100 px-4 py-3">
-            <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-            <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-            <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-            <span className="ml-3 rounded-md bg-gray-100 px-3 py-1 text-[10px] font-medium text-gray-400">tiendapos.app</span>
-          </div>
-          <div className="grid grid-cols-[180px_1fr]">
-            <div className="border-r border-gray-100 bg-gray-50/50 p-3 max-sm:hidden">
-              <div className="mb-3 h-2 w-16 rounded bg-gray-200" />
-              <div className="mb-2 h-2 w-20 rounded bg-violet-100" />
-              <div className="mb-2 h-2 w-14 rounded bg-gray-200" />
-              <div className="mb-2 h-2 w-18 rounded bg-gray-200" />
-              <div className="mb-2 h-2 w-12 rounded bg-gray-200" />
-            </div>
-            <div className="p-4">
-              <div className="mb-3 flex items-center justify-between">
-                <div className="h-3 w-24 rounded bg-gray-200" />
-                <div className="h-6 w-20 rounded-lg bg-violet-100" />
-              </div>
-              <div className="grid grid-cols-3 gap-2">
-                <div className="rounded-lg border border-gray-100 p-2">
-                  <div className="mb-1 h-2 w-12 rounded bg-gray-200" />
-                  <div className="mb-1 text-base font-bold text-[#1a1a2e]">$1,280</div>
-                  <div className="h-1.5 w-16 rounded bg-gray-100" />
-                </div>
-                <div className="rounded-lg border border-gray-100 p-2">
-                  <div className="mb-1 h-2 w-12 rounded bg-gray-200" />
-                  <div className="mb-1 text-base font-bold text-[#1a1a2e]">47</div>
-                  <div className="h-1.5 w-16 rounded bg-gray-100" />
-                </div>
-                <div className="rounded-lg border border-gray-100 p-2">
-                  <div className="mb-1 h-2 w-12 rounded bg-gray-200" />
-                  <div className="mb-1 text-base font-bold text-[#1a1a2e]">12</div>
-                  <div className="h-1.5 w-16 rounded bg-gray-100" />
-                </div>
-              </div>
-              <div className="mt-3 grid grid-cols-4 gap-1.5">
-                <div className="h-1.5 rounded bg-gray-100" />
-                <div className="h-1.5 rounded bg-gray-100" />
-                <div className="h-1.5 rounded bg-violet-100" />
-                <div className="h-1.5 rounded bg-gray-100" />
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Glow behind mockup */}
-        <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-violet-500/5 blur-3xl" />
-      </div>
-
       {/* Disclaimer */}
       <div className="relative mx-auto mt-10 max-w-[640px] rounded-xl border border-gray-200/40 bg-white/40 px-4 py-2.5 text-center text-xs leading-relaxed text-gray-400 backdrop-blur-sm">
         Gestiona datos formales de facturación — <strong className="text-gray-500">RIF/NIT/RFC/RUC/CUIT</strong> — para cumplimiento contable. <strong className="text-red-400">No es un sistema fiscal certificado</strong>.
