@@ -328,11 +328,12 @@
             box-shadow: 0 6px 28px rgba(37,211,102,0.45);
         }
         footer {
-            border-top: 1px solid #e2e8f0; padding: 1.5rem 0;
-            font-size: 0.75rem; color: #94a3b8; text-align: center;
+            background: #7c3aed; padding: 2rem 1.5rem;
+            font-size: 0.8rem; color: rgba(255,255,255,0.7); text-align: center;
         }
-        footer a { color: #64748b; text-decoration: none; }
-        footer a:hover { color: #7c3aed; }
+        footer a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: #fff; }
+        footer strong { color: #fff; font-weight: 600; }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -747,10 +748,12 @@
         </script>
 
         <footer>
-            &copy; {{ date('Y') }} TiendaPOS &mdash; 
-            <a href="#" onclick="event.preventDefault();openModal('modalPrivacidad')">Privacidad</a> &middot; 
-            <a href="#" onclick="event.preventDefault();openModal('modalTerminos')">Términos</a> &middot; 
-            <a href="#" onclick="event.preventDefault();openModal('modalLegal')">Aviso legal</a>
+            <strong>&copy; {{ date('Y') }} TiendaPOS</strong> &mdash; 
+            <a href="#" onclick="event.preventDefault();openModal('modalPrivacidad')"><strong>Privacidad</strong></a> &middot; 
+            <a href="#" onclick="event.preventDefault();openModal('modalTerminos')"><strong>Términos</strong></a> &middot; 
+            <a href="#" onclick="event.preventDefault();openModal('modalLegal')"><strong>Aviso legal</strong></a>
+            <br>
+            <span style="font-size:0.75rem;opacity:0.6;margin-top:0.5rem;display:inline-block">Backend en Render &middot; Base de datos en Neon</span>
         </footer>
 
     </div>
