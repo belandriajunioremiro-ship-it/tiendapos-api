@@ -4,86 +4,108 @@ const year = new Date().getFullYear();
 
 <!-- Modals -->
 <div class="modal-overlay fixed inset-0 z-50 hidden items-center justify-center bg-black/40 p-6 backdrop-blur-sm" id="modalPrivacidad">
-  <div class="w-full max-w-[600px] max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
+  <div class="w-full max-w-[540px] max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
     <div class="mb-5 flex items-center justify-between">
       <h3 class="text-lg font-bold text-[#1a1a2e]">Política de Privacidad</h3>
       <button class="modal-close rounded-lg p-1.5 text-gray-400 transition-all hover:bg-violet-50 hover:text-violet-600">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div class="text-sm leading-relaxed text-gray-600">
-      <p class="mb-3">En TiendaPOS, la protección de tus datos es una prioridad. Esta política describe cómo recopilamos, usamos y protegemos la información de nuestros usuarios.</p>
-      <p class="mb-3"><strong>Información que recopilamos:</strong> Datos de registro (nombre, correo electrónico, contraseña), información de la tienda (RIF/NIT/RFC, razón social, dirección) y datos transaccionales generados durante el uso del sistema.</p>
-      <p class="mb-3"><strong>Uso de la información:</strong> Utilizamos tus datos únicamente para proveer el servicio: procesar ventas, generar facturas, gestionar inventario y mantener tu cuenta activa. No compartimos tu información con terceros sin tu consentimiento explícito.</p>
-      <p class="mb-3"><strong>Seguridad:</strong> Implementamos medidas técnicas y organizativas para proteger tus datos contra acceso no autorizado, pérdida o alteración. Las comunicaciones están cifradas vía HTTPS y los tokens de autenticación se almacenan de forma segura.</p>
-      <p class="mb-3"><strong>Retención:</strong> Conservamos tus datos mientras tu cuenta esté activa. Al cancelar tu suscripción, puedes solicitar la eliminación completa de tus datos escribiendo a nuestro contacto.</p>
-      <p><strong>Contacto:</strong> Para cualquier consulta sobre privacidad, escríbenos vía WhatsApp.</p>
+    <div class="space-y-3 text-sm leading-relaxed text-gray-600">
+      <p><strong>Información que recopilamos:</strong> Datos de registro (nombre, correo electrónico, contraseña), información de la tienda (RIF/NIT/RFC, razón social, dirección) y datos transaccionales del sistema.</p>
+      <p><strong>Uso de la información:</strong> Proveer el servicio: procesar ventas, generar facturas, gestionar inventario y mantener tu cuenta activa. No compartimos datos con terceros sin consentimiento.</p>
+      <p><strong>Seguridad:</strong> Comunicaciones cifradas vía HTTPS. Tokens de autenticación almacenados de forma segura.</p>
+      <p><strong>Contacto:</strong> Para consultas sobre privacidad, escríbenos vía WhatsApp.</p>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay fixed inset-0 z-50 hidden items-center justify-center bg-black/40 p-6 backdrop-blur-sm" id="modalTerminos">
-  <div class="w-full max-w-[600px] max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
+  <div class="w-full max-w-[540px] max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
     <div class="mb-5 flex items-center justify-between">
       <h3 class="text-lg font-bold text-[#1a1a2e]">Términos del Servicio</h3>
       <button class="modal-close rounded-lg p-1.5 text-gray-400 transition-all hover:bg-violet-50 hover:text-violet-600">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div class="text-sm leading-relaxed text-gray-600">
-      <p class="mb-3">Al utilizar TiendaPOS, aceptas los siguientes términos y condiciones. Te recomendamos leerlos detenidamente antes de usar el sistema.</p>
-      <p class="mb-3"><strong>Uso del servicio:</strong> TiendaPOS es un sistema de punto de venta diseñado para gestionar operaciones comerciales. El usuario se compromete a usar el sistema de forma ética y conforme a las leyes aplicables en su país.</p>
-      <p class="mb-3"><strong>Responsabilidad fiscal:</strong> TiendaPOS facilita la gestión de datos formales de facturación, pero no es un sistema fiscal certificado. El usuario es el único responsable de cumplir con sus obligaciones tributarias y de asegurarse de que el uso del sistema cumple con la normativa local.</p>
-      <p class="mb-3"><strong>Disponibilidad:</strong> Nos esforzamos por mantener el servicio operativo 24/7, pero no garantizamos disponibilidad ininterrumpida. El servicio se provee "tal cual" y podrían ocurrir interrupciones programadas o no programadas.</p>
-      <p class="mb-3"><strong>Limitación de responsabilidad:</strong> TiendaPOS no se hace responsable por daños directos o indirectos derivados del uso del sistema, incluyendo pero no limitado a pérdida de datos, interrupción del negocio o incumplimientos fiscales.</p>
-      <p><strong>Modificaciones:</strong> Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán notificados a través del sistema.</p>
+    <div class="space-y-3 text-sm leading-relaxed text-gray-600">
+      <p><strong>Uso del servicio:</strong> TiendaPOS es un POS para gestionar operaciones comerciales. El usuario se compromete a usarlo de forma ética y conforme a las leyes de su país.</p>
+      <p><strong>Responsabilidad fiscal:</strong> TiendaPOS facilita datos formales de facturación, pero no es un sistema fiscal certificado. El usuario es responsable de sus obligaciones tributarias.</p>
+      <p><strong>Disponibilidad:</strong> Nos esforzamos por mantener el servicio 24/7, pero no garantizamos disponibilidad ininterrumpida.</p>
+      <p><strong>Modificaciones:</strong> Nos reservamos el derecho de modificar estos términos. Los cambios serán notificados a través del sistema.</p>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay fixed inset-0 z-50 hidden items-center justify-center bg-black/40 p-6 backdrop-blur-sm" id="modalLegal">
-  <div class="w-full max-w-[600px] max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
+  <div class="w-full max-w-[540px] max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl">
     <div class="mb-5 flex items-center justify-between">
       <h3 class="text-lg font-bold text-[#1a1a2e]">Aviso Legal</h3>
       <button class="modal-close rounded-lg p-1.5 text-gray-400 transition-all hover:bg-violet-50 hover:text-violet-600">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div class="text-sm leading-relaxed text-gray-600">
-      <p class="mb-3"><strong>Propiedad intelectual:</strong> TiendaPOS es un software desarrollado de forma independiente. Todos los derechos sobre el código, la marca y la documentación están reservados.</p>
-      <p class="mb-3"><strong>Exención de responsabilidad fiscal:</strong> Este sistema no está certificado por ninguna autoridad tributaria. Los datos fiscales ingresados son responsabilidad exclusiva del usuario. Recomendamos consultar con un contador o asesor fiscal para garantizar el cumplimiento de las obligaciones tributarias locales.</p>
-      <p class="mb-3"><strong>Protección de datos:</strong> Cumplimos con los estándares básicos de protección de datos. Los datos se almacenan en servidores de terceros (Neon.tech para base de datos, Render para la aplicación) que cuentan con sus propias certificaciones de seguridad.</p>
-      <p><strong>Jurisdicción:</strong> Este aviso legal se rige por las leyes de la República Bolivariana de Venezuela. Cualquier controversia será resuelta ante los tribunales competentes de Caracas.</p>
+    <div class="space-y-3 text-sm leading-relaxed text-gray-600">
+      <p><strong>Propiedad intelectual:</strong> TiendaPOS es un software desarrollado de forma independiente. Todos los derechos reservados.</p>
+      <p><strong>Exención fiscal:</strong> Este sistema no está certificado por ninguna autoridad tributaria. Recomendamos consultar con un contador para garantizar el cumplimiento local.</p>
+      <p><strong>Protección de datos:</strong> Los datos se almacenan en servidores de terceros (Neon.tech, Render) con sus propias certificaciones de seguridad.</p>
+      <p><strong>Jurisdicción:</strong> Este aviso se rige por las leyes de Venezuela. Cualquier controversia será resuelta en Caracas.</p>
     </div>
   </div>
 </div>
 
 <!-- Footer -->
-<footer class="mt-8 w-full bg-violet-600 px-6 py-8 text-center reveal">
+<footer class="w-full bg-gradient-to-b from-violet-700 to-violet-900 px-6 py-12 text-center reveal">
   <div class="mx-auto max-w-[1140px]">
-    <strong class="text-white/90">&copy; {year} TiendaPOS</strong>
-    <span class="text-white/70"> &mdash; </span>
-    <a href="#" class="footer-link font-semibold text-white/70 no-underline transition-colors hover:text-white" data-modal="modalPrivacidad">Privacidad</a>
-    <span class="text-white/50"> &middot; </span>
-    <a href="#" class="footer-link font-semibold text-white/70 no-underline transition-colors hover:text-white" data-modal="modalTerminos">Términos</a>
-    <span class="text-white/50"> &middot; </span>
-    <a href="#" class="footer-link font-semibold text-white/70 no-underline transition-colors hover:text-white" data-modal="modalLegal">Aviso legal</a>
-    <br />
-    <span class="mt-2 inline-block text-xs text-white/50">Backend en Render &middot; Base de datos en Neon</span>
+    <!-- Logo + description -->
+    <div class="mb-6">
+      <div class="mb-2 text-xl font-extrabold text-white/90">Tienda<span class="text-amber-300">POS</span></div>
+      <p class="mx-auto max-w-[400px] text-sm text-violet-200/70">Sistema de punto de venta multi-país para Latinoamérica.</p>
+    </div>
+
+    <!-- Social icons -->
+    <div class="mb-6 flex items-center justify-center gap-4">
+      <a href="https://wa.me/584247253544" target="_blank" class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-all hover:bg-[#25d366] hover:text-white hover:shadow-lg" aria-label="WhatsApp">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <a href="#" class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-all hover:bg-violet-500 hover:text-white" aria-label="Instagram">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-all hover:bg-blue-500 hover:text-white" aria-label="Facebook">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
+
+    <!-- Links -->
+    <div class="mb-6 text-sm">
+      <a href="#" class="footer-link font-medium text-violet-200/70 no-underline transition-colors hover:text-white" data-modal="modalPrivacidad">Privacidad</a>
+      <span class="mx-2 text-violet-400/30">·</span>
+      <a href="#" class="footer-link font-medium text-violet-200/70 no-underline transition-colors hover:text-white" data-modal="modalTerminos">Términos</a>
+      <span class="mx-2 text-violet-400/30">·</span>
+      <a href="#" class="footer-link font-medium text-violet-200/70 no-underline transition-colors hover:text-white" data-modal="modalLegal">Aviso legal</a>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-white/10 pt-6 text-xs text-violet-300/50">
+      &copy; {year} TiendaPOS &mdash; Backend en Render &middot; Base de datos en Neon
+    </div>
   </div>
 </footer>
 
+<!-- Back to top -->
+<button id="backToTop" class="fixed bottom-20 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg shadow-gray-200/50 text-gray-400 opacity-0 invisible transition-all hover:text-violet-600 hover:shadow-violet-200/50" aria-label="Volver arriba">
+  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
 <script is:inline>
 function openModal(id) {
-  const el = document.getElementById(id);
-  el.classList.remove('hidden');
-  el.classList.add('flex');
+  document.getElementById(id).classList.remove('hidden');
+  document.getElementById(id).classList.add('flex');
   document.body.style.overflow = 'hidden';
 }
 function closeModal(id) {
-  const el = document.getElementById(id);
-  el.classList.add('hidden');
-  el.classList.remove('flex');
+  document.getElementById(id).classList.add('hidden');
+  document.getElementById(id).classList.remove('flex');
   document.body.style.overflow = '';
 }
 document.addEventListener('DOMContentLoaded', function() {
@@ -105,5 +127,22 @@ document.addEventListener('DOMContentLoaded', function() {
       if (modalId) openModal(modalId);
     });
   });
+
+  // Back to top
+  var backBtn = document.getElementById('backToTop');
+  if (backBtn) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 500) {
+        backBtn.classList.remove('opacity-0', 'invisible');
+        backBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backBtn.classList.add('opacity-0', 'invisible');
+        backBtn.classList.remove('opacity-100', 'visible');
+      }
+    }, { passive: true });
+    backBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 });
 </script>
