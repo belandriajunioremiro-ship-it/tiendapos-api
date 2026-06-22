@@ -123,38 +123,63 @@
 
         .countries-section { padding: 2rem 0 4rem; }
         .country-chips {
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem;
-            margin-bottom: 0.75rem;
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem;
+            margin-bottom: 1rem;
         }
         .chip {
-            width: 52px; height: 52px; border-radius: 50%;
-            background: #fff; border: 1px solid #e2e8f0;
-            font-size: 1.5rem;
+            width: 58px; height: 58px; border-radius: 50%;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            font-size: 1.6rem;
             display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s;
+            transition: all 0.25s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-        .chip:hover { border-color: #c4b5fd; transform: translateY(-2px); }
+        .chip:hover {
+            border-color: #c4b5fd;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(124,58,237,0.1);
+        }
         .country-names {
-            text-align: center; font-size: 0.95rem; color: #475569;
-            margin-bottom: 2rem; font-weight: 500;
+            text-align: center; font-size: 1rem; color: #334155;
+            margin-bottom: 2.5rem; font-weight: 500;
+            letter-spacing: 0.01em;
         }
         .fiscal-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.75rem; max-width: 860px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem; max-width: 680px; margin: 0 auto;
         }
         .fiscal-item {
-            background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
-            padding: 1rem 1.25rem; text-align: center;
-            transition: border-color 0.2s;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: left;
+            transition: all 0.25s;
+            display: flex; gap: 1rem; align-items: flex-start;
         }
-        .fiscal-item:hover { border-color: #c4b5fd; }
-        .fiscal-item .fiscal-label {
-            display: block; font-size: 0.7rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.05em;
-            color: #7c3aed; margin-bottom: 0.25rem;
+        .fiscal-item:hover {
+            border-color: #c4b5fd;
+            box-shadow: 0 4px 16px rgba(124,58,237,0.06);
         }
-        .fiscal-item span:last-child {
-            font-size: 0.85rem; color: #475569;
+        .fiscal-item .fi-icon {
+            flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px;
+            background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(124,58,237,0.04));
+            display: flex; align-items: center; justify-content: center;
+            color: #7c3aed;
+        }
+        .fiscal-item .fi-content {}
+        .fiscal-item .fi-label {
+            font-size: 0.7rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.06em;
+            color: #7c3aed; margin-bottom: 0.2rem;
+        }
+        .fiscal-item .fi-value {
+            font-size: 0.88rem; color: #334155; font-weight: 500;
+        }
+        .fiscal-item .fi-sub {
+            font-size: 0.8rem; color: #94a3b8; margin-top: 0.15rem;
         }
 
         .plans-grid {
@@ -369,20 +394,44 @@
             </div>
             <div class="fiscal-grid">
                 <div class="fiscal-item">
-                    <span class="fiscal-label">Identificación fiscal</span>
-                    <span>RIF, NIT, RFC, RUC, CUIT</span>
+                    <div class="fi-icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+                    </div>
+                    <div class="fi-content">
+                        <div class="fi-label">Identificación fiscal</div>
+                        <div class="fi-value">RIF, NIT, RFC, RUC, CUIT</div>
+                        <div class="fi-sub">Según el país</div>
+                    </div>
                 </div>
                 <div class="fiscal-item">
-                    <span class="fiscal-label">Impuestos</span>
-                    <span>IVA / IGV por país</span>
+                    <div class="fi-icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    </div>
+                    <div class="fi-content">
+                        <div class="fi-label">Impuestos</div>
+                        <div class="fi-value">IVA / IGV por país</div>
+                        <div class="fi-sub">Tasas locales configurables</div>
+                    </div>
                 </div>
                 <div class="fiscal-item">
-                    <span class="fiscal-label">Monedas</span>
-                    <span>USD, VES, COP, MXN, ARS, PEN, CLP, BOB, UYU</span>
+                    <div class="fi-icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div class="fi-content">
+                        <div class="fi-label">Monedas</div>
+                        <div class="fi-value">USD, VES, COP, MXN, ARS, PEN, CLP, BOB, UYU</div>
+                        <div class="fi-sub">Multimoneda con tasas históricas</div>
+                    </div>
                 </div>
                 <div class="fiscal-item">
-                    <span class="fiscal-label">Estatus fiscal</span>
-                    <span>Datos formales — sin certificación fiscal</span>
+                    <div class="fi-icon">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="fi-content">
+                        <div class="fi-label">Estatus fiscal</div>
+                        <div class="fi-value">Datos formales</div>
+                        <div class="fi-sub">Sin certificación fiscal</div>
+                    </div>
                 </div>
             </div>
         </section>
