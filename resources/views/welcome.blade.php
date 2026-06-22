@@ -6,6 +6,7 @@
     <title>TiendaPOS — Sistema de Punto de Venta para Latinoamérica</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -130,11 +131,11 @@
             width: 58px; height: 58px; border-radius: 50%;
             background: #fff;
             border: 1px solid #e2e8f0;
-            font-size: 1.6rem;
             display: flex; align-items: center; justify-content: center;
             transition: all 0.25s;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
+        .chip .fi { font-size: 1.6rem; display: block; line-height: 1; }
         .chip:hover {
             border-color: #c4b5fd;
             transform: translateY(-3px);
@@ -378,15 +379,15 @@
 
         <section class="countries-section">
             <div class="country-chips">
-                <div class="chip">🇻🇪</div>
-                <div class="chip">🇨🇴</div>
-                <div class="chip">🇲🇽</div>
-                <div class="chip">🇪🇨</div>
-                <div class="chip">🇦🇷</div>
-                <div class="chip">🇵🇪</div>
-                <div class="chip">🇨🇱</div>
-                <div class="chip">🇧🇴</div>
-                <div class="chip">🇺🇾</div>
+                <div class="chip"><span class="fi fi-ve"></span></div>
+                <div class="chip"><span class="fi fi-co"></span></div>
+                <div class="chip"><span class="fi fi-mx"></span></div>
+                <div class="chip"><span class="fi fi-ec"></span></div>
+                <div class="chip"><span class="fi fi-ar"></span></div>
+                <div class="chip"><span class="fi fi-pe"></span></div>
+                <div class="chip"><span class="fi fi-cl"></span></div>
+                <div class="chip"><span class="fi fi-bo"></span></div>
+                <div class="chip"><span class="fi fi-uy"></span></div>
             </div>
             <div class="country-names">
                 Venezuela &middot; Colombia &middot; México &middot; Ecuador &middot; Argentina
