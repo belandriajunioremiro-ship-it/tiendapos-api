@@ -200,26 +200,80 @@
 
         .plans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(210px,100%), 1fr));
-            gap: 1rem; padding: 0 0 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(230px,100%), 1fr));
+            gap: 1.25rem; padding: 0 0 3rem;
+            align-items: start;
         }
         .plan-card {
-            background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
-            padding: 1.5rem; text-align: center; transition: all 0.25s;
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 20px;
+            padding: 2rem 1.5rem; text-align: center; transition: all 0.3s;
+            position: relative; overflow: hidden;
         }
-        .plan-card:hover { border-color: #c4b5fd; }
+        .plan-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+        }
         .plan-card.highlight {
-            border-color: #7c3aed; box-shadow: 0 8px 32px rgba(124,58,237,0.12);
+            border-color: #7c3aed;
+            box-shadow: 0 8px 32px rgba(124,58,237,0.15);
+            transform: scale(1.03);
         }
+        .plan-card.highlight:hover {
+            transform: scale(1.03) translateY(-4px);
+        }
+        .plan-card .plan-badge {
+            position: absolute; top: 12px; right: -28px;
+            background: #7c3aed; color: #fff;
+            font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.2rem 2.2rem;
+            transform: rotate(45deg);
+        }
+        .plan-card .plan-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        .plan-card .plan-icon.trial { background: rgba(148,163,184,0.1); color: #64748b; }
+        .plan-card .plan-icon.basico { background: rgba(99,102,241,0.1); color: #6366f1; }
+        .plan-card .plan-icon.pro { background: rgba(124,58,237,0.12); color: #7c3aed; }
+        .plan-card .plan-icon.premium { background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05)); color: #f59e0b; }
         .plan-card .plan-name {
-            font-size: 0.75rem; font-weight: 600; color: #7c3aed;
-            text-transform: uppercase; letter-spacing: 0.05em;
+            font-size: 0.8rem; font-weight: 700; color: #7c3aed;
+            text-transform: uppercase; letter-spacing: 0.06em;
         }
-        .plan-card .plan-price { font-size: 1.75rem; font-weight: 800; margin: 0.4rem 0 0.2rem; }
+        .plan-card .plan-price {
+            font-size: 2rem; font-weight: 800; margin: 0.5rem 0 0.15rem;
+            color: #1a1a2e;
+        }
         .plan-card .plan-price span { font-size: 0.85rem; font-weight: 400; color: #94a3b8; }
-        .plan-card .plan-desc { font-size: 0.8rem; color: #64748b; margin-bottom: 1rem; }
-        .plan-card ul { list-style: none; font-size: 0.8rem; color: #475569; line-height: 2; }
-        .plan-card ul li::before { content: '✓ '; color: #7c3aed; font-weight: 700; }
+        .plan-card .plan-desc {
+            font-size: 0.8rem; color: #64748b; margin-bottom: 1.25rem;
+            padding-bottom: 1rem; border-bottom: 1px solid #f1f5f9;
+        }
+        .plan-card ul {
+            list-style: none; font-size: 0.85rem; color: #475569;
+            line-height: 2.2; text-align: left; max-width: 180px; margin: 0 auto;
+        }
+        .plan-card ul li { display: flex; align-items: center; gap: 0.4rem; }
+        .plan-card ul li .check {
+            flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+        .plan-card ul li .check.trial { background: rgba(148,163,184,0.15); color: #64748b; }
+        .plan-card ul li .check.basico { background: rgba(99,102,241,0.12); color: #6366f1; }
+        .plan-card ul li .check.pro { background: rgba(124,58,237,0.12); color: #7c3aed; }
+        .plan-card ul li .check.premium { background: rgba(245,158,11,0.12); color: #f59e0b; }
+        .plan-card.premium-bg {
+            background: linear-gradient(145deg, #1e1b2e, #2d1f3e);
+            border-color: rgba(124,58,237,0.2);
+        }
+        .plan-card.premium-bg .plan-name { color: #a78bfa; }
+        .plan-card.premium-bg .plan-price { color: #f8fafc; }
+        .plan-card.premium-bg .plan-desc { color: #94a3b8; border-bottom-color: rgba(255,255,255,0.06); }
+        .plan-card.premium-bg ul li { color: #cbd5e1; }
+        .plan-card.premium-bg .plan-icon.premium { background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(167,139,250,0.05)); color: #a78bfa; }
+        .plan-card.premium-bg ul li .check.premium { background: rgba(167,139,250,0.15); color: #a78bfa; }
 
         footer {
             border-top: 1px solid #e2e8f0; padding: 1.5rem 0;
@@ -506,47 +560,60 @@
 
         <section class="plans-grid">
             <div class="plan-card">
+                <div class="plan-icon trial">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
                 <div class="plan-name">Trial</div>
                 <div class="plan-price">$0 <span>/mes</span></div>
-                <div class="plan-desc">14 días gratis</div>
+                <div class="plan-desc">14 días gratis. Sin compromiso.</div>
                 <ul>
-                    <li>50 productos</li>
-                    <li>2 usuarios</li>
-                    <li>1 almacén</li>
-                    <li>1 caja</li>
+                    <li><span class="check trial"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 50 productos</li>
+                    <li><span class="check trial"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 2 usuarios</li>
+                    <li><span class="check trial"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 1 almacén</li>
+                    <li><span class="check trial"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 1 caja</li>
                 </ul>
             </div>
             <div class="plan-card">
+                <div class="plan-icon basico">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
                 <div class="plan-name">Básico</div>
                 <div class="plan-price">$19 <span>/mes</span></div>
-                <div class="plan-desc">Para crecer</div>
+                <div class="plan-desc">Para negocios en crecimiento.</div>
                 <ul>
-                    <li>200 productos</li>
-                    <li>5 usuarios</li>
-                    <li>2 almacenes</li>
-                    <li>2 cajas</li>
+                    <li><span class="check basico"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 200 productos</li>
+                    <li><span class="check basico"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 5 usuarios</li>
+                    <li><span class="check basico"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 2 almacenes</li>
+                    <li><span class="check basico"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 2 cajas</li>
                 </ul>
             </div>
             <div class="plan-card highlight">
+                <div class="plan-badge">Popular</div>
+                <div class="plan-icon pro">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
                 <div class="plan-name">Pro</div>
                 <div class="plan-price">$49 <span>/mes</span></div>
-                <div class="plan-desc">Lo más popular</div>
+                <div class="plan-desc">La opción más balanceada.</div>
                 <ul>
-                    <li>1000 productos</li>
-                    <li>15 usuarios</li>
-                    <li>5 almacenes</li>
-                    <li>5 cajas</li>
+                    <li><span class="check pro"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 1000 productos</li>
+                    <li><span class="check pro"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 15 usuarios</li>
+                    <li><span class="check pro"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 5 almacenes</li>
+                    <li><span class="check pro"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> 5 cajas</li>
                 </ul>
             </div>
-            <div class="plan-card">
+            <div class="plan-card premium-bg">
+                <div class="plan-icon premium">
+                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
                 <div class="plan-name">Premium</div>
                 <div class="plan-price">$99 <span>/mes</span></div>
-                <div class="plan-desc">Sin límites</div>
+                <div class="plan-desc">Sin límites, sin preocupaciones.</div>
                 <ul>
-                    <li>Productos ilimitados</li>
-                    <li>Usuarios ilimitados</li>
-                    <li>Almacenes ilimitados</li>
-                    <li>Cajas ilimitadas</li>
+                    <li><span class="check premium"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> Productos ilimitados</li>
+                    <li><span class="check premium"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> Usuarios ilimitados</li>
+                    <li><span class="check premium"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> Almacenes ilimitados</li>
+                    <li><span class="check premium"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 5 4 7 8 3"/></svg></span> Cajas ilimitadas</li>
                 </ul>
             </div>
         </section>
