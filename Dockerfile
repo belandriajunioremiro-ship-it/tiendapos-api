@@ -1,8 +1,8 @@
 FROM php:8.2-apache
 
-RUN apt-get update && apt-get install -y libpq-dev libonig-dev \
-    && docker-php-ext-install pdo_pgsql mbstring bcmath \
-    && docker-php-ext-enable pdo_pgsql mbstring bcmath
+RUN apt-get update && apt-get install -y libpq-dev libonig-dev libxml2-dev libzip-dev unzip \
+    && docker-php-ext-install pdo_pgsql mbstring bcmath xml zip \
+    && pecl install redis && docker-php-ext-enable redis
 
 RUN a2enmod rewrite
 
@@ -10,11 +10,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-COPY . .
-
+COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
+COPY . .
+
+RUN php artisan config:cache && php artisan route:cache && php artisan view:cache || true
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
