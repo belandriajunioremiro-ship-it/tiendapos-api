@@ -1,6 +1,4 @@
-import { motion } from 'framer-motion';
 import SectionHeader from './SectionHeader';
-import { StaggerContainer, StaggerItem } from './StaggerGrid';
 
 const features = [
   {
@@ -10,7 +8,7 @@ const features = [
       </svg>
     ),
     title: 'POS + Caja',
-    desc: 'Interfaz táctil optimizada para agilidad. Ventas rápidas, múltiples métodos de pago y cierre de caja automatizado.',
+    desc: 'Interfaz táctil optimizada. Ventas rápidas, múltiples métodos de pago y cierre de caja automatizado.',
   },
   {
     icon: (
@@ -19,7 +17,7 @@ const features = [
       </svg>
     ),
     title: 'Facturación',
-    desc: 'Facturas, notas de crédito/débito y comprobantes fiscales electrónicos adaptados a la regulación de cada país.',
+    desc: 'Facturas, notas de crédito/débito y comprobantes fiscales electrónicos adaptados a cada país.',
   },
   {
     icon: (
@@ -28,7 +26,7 @@ const features = [
       </svg>
     ),
     title: 'Inventario',
-    desc: 'Control de stock en tiempo real, alertas de bajo inventario, ajustes y transferencias entre múltiples negocios.',
+    desc: 'Control de stock en tiempo real, alertas de bajo inventario, ajustes y transferencias entre negocios.',
   },
   {
     icon: (
@@ -37,7 +35,7 @@ const features = [
       </svg>
     ),
     title: 'Multimoneda',
-    desc: 'Conversión automática entre monedas, tasas personalizables y cierres contables por moneda para economías dolarizadas.',
+    desc: 'Conversión automática entre monedas, tasas personalizables y cierres contables por moneda.',
   },
   {
     icon: (
@@ -46,7 +44,7 @@ const features = [
       </svg>
     ),
     title: 'Roles y permisos',
-    desc: 'Define accesos granularmente: cajero, supervisor, administrador o contador. Control total sobre cada acción del sistema.',
+    desc: 'Define accesos granularmente: cajero, supervisor, administrador o contador.',
   },
   {
     icon: (
@@ -55,7 +53,7 @@ const features = [
       </svg>
     ),
     title: 'Créditos y cobranzas',
-    desc: 'Administración de créditos, cuentas por cobrar, intereses por mora y notificaciones automáticas de pago a clientes.',
+    desc: 'Administración de créditos, cuentas por cobrar y notificaciones automáticas de pago.',
   },
   {
     icon: (
@@ -64,7 +62,7 @@ const features = [
       </svg>
     ),
     title: 'Reportes',
-    desc: 'Dashboard en tiempo real con ventas, comisiones, impuestos y rentabilidad. Exporta a PDF o CSV con un clic.',
+    desc: 'Dashboard en tiempo real con ventas, comisiones, impuestos y rentabilidad. Exporta a PDF o CSV.',
   },
   {
     icon: (
@@ -73,7 +71,7 @@ const features = [
       </svg>
     ),
     title: 'Suscripciones',
-    desc: 'Facturación recurrente inteligente con recordatorios de pago, control de vencimientos y múltiples pasarelas de pago.',
+    desc: 'Facturación recurrente inteligente con recordatorios y control de vencimientos.',
   },
   {
     icon: (
@@ -82,7 +80,7 @@ const features = [
       </svg>
     ),
     title: 'Onboarding',
-    desc: 'Configuración guiada paso a paso con asistente de migración de datos e importación masiva desde Excel o CSV.',
+    desc: 'Configuración guiada paso a paso con importación masiva desde Excel o CSV.',
   },
 ];
 
@@ -93,25 +91,23 @@ export default function Features() {
         <SectionHeader
           badge="Características"
           title="Todo lo que necesitas para crecer"
-          subtitle="Un ecosistema completo que se adapta a la evolución de tu negocio, desde el primer cliente hasta la expansión regional."
+          subtitle="Un ecosistema completo que se adapta a la evolución de tu negocio."
         />
 
-        <StaggerContainer className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
-            <StaggerItem key={f.title}>
-              <motion.div
-                whileHover={{ y: -5, boxShadow: '0 20px 40px -12px rgba(124, 58, 237, 0.12)' }}
-                className="group rounded-2xl border border-gray-100 bg-white p-7 transition-colors hover:border-violet-200/50"
-              >
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-violet-50 ring-1 ring-violet-100">
-                  {f.icon}
-                </div>
-                <h3 className="mb-2 text-base font-bold text-gray-900">{f.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-500">{f.desc}</p>
-              </motion.div>
-            </StaggerItem>
+            <div
+              key={f.title}
+              className="rounded-2xl border border-gray-100 bg-white p-7 transition-all hover:-translate-y-0.5 hover:border-violet-200/50 hover:shadow-md"
+            >
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-violet-50 ring-1 ring-violet-100">
+                {f.icon}
+              </div>
+              <h3 className="mb-2 text-base font-bold text-gray-900">{f.title}</h3>
+              <p className="text-sm leading-relaxed text-gray-500">{f.desc}</p>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );

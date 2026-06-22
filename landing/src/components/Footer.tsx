@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const modals = {
   privacidad: {
@@ -94,51 +93,42 @@ export default function Footer() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {activeModal && modal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
-            onClick={() => setActiveModal(null)}
+      {activeModal && modal && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+          onClick={() => setActiveModal(null)}
+        >
+          <div
+            className="relative max-h-[80vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative max-h-[80vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-8 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
+            <button
+              onClick={() => setActiveModal(null)}
+              className="absolute right-5 top-5 text-gray-400 transition-colors hover:text-gray-600"
             >
-              <button
-                onClick={() => setActiveModal(null)}
-                className="absolute right-5 top-5 text-gray-400 transition-colors hover:text-gray-600"
-              >
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <h3 className="mb-5 text-xl font-bold text-gray-900">{modal.title}</h3>
-              <div className="space-y-3 text-sm leading-relaxed text-gray-600">
-                {modal.content.map((item, i) => {
-                  if (typeof item === 'string') {
-                    if (item.startsWith('•')) {
-                      return <p key={i} className="pl-4">{item}</p>;
-                    }
-                    return <p key={i}>{item}</p>;
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h3 className="mb-5 text-xl font-bold text-gray-900">{modal.title}</h3>
+            <div className="space-y-3 text-sm leading-relaxed text-gray-600">
+              {modal.content.map((item, i) => {
+                if (typeof item === 'string') {
+                  if (item.startsWith('•')) {
+                    return <p key={i} className="pl-4">{item}</p>;
                   }
-                  return (
-                    <p key={i}>
-                      <strong>{item.label}</strong> {item.text}
-                    </p>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  return <p key={i}>{item}</p>;
+                }
+                return (
+                  <p key={i}>
+                    <strong>{item.label}</strong> {item.text}
+                  </p>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

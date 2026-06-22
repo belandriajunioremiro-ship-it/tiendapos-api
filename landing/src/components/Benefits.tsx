@@ -1,6 +1,4 @@
-import { motion } from 'framer-motion';
 import SectionHeader from './SectionHeader';
-import { StaggerContainer, StaggerItem } from './StaggerGrid';
 
 const items = [
   {
@@ -51,22 +49,20 @@ export default function Benefits() {
           subtitle="Cada funcionalidad está diseñada para resolver los desafíos reales de tu negocio en Latinoamérica."
         />
 
-        <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => (
-            <StaggerItem key={item.title}>
-              <motion.div
-                whileHover={{ y: -6, boxShadow: '0 20px 40px -12px rgba(124, 58, 237, 0.15)' }}
-                className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-sm transition-shadow"
-              >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 ring-1 ring-violet-100">
-                  {item.icon}
-                </div>
-                <h3 className="mb-2.5 text-lg font-bold text-gray-900">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-gray-500">{item.desc}</p>
-              </motion.div>
-            </StaggerItem>
+            <div
+              key={item.title}
+              className="group relative h-full rounded-2xl border border-gray-100 bg-white p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+            >
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 ring-1 ring-violet-100">
+                {item.icon}
+              </div>
+              <h3 className="mb-2.5 text-lg font-bold text-gray-900">{item.title}</h3>
+              <p className="text-sm leading-relaxed text-gray-500">{item.desc}</p>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );
