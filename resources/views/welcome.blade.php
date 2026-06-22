@@ -117,7 +117,41 @@
         .hero-stats .stat { text-align: center; min-width: 60px; }
         .hero-stats .num { font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 800; color: #7c3aed; }
         .hero-stats .label { font-size: 0.8rem; color: #64748b; margin-top: 0.15rem; }
+        .hero-disclaimer {
+            max-width: 680px; margin: 1.5rem auto 0; padding: 0.75rem 1rem;
+            font-size: 0.75rem; color: #94a3b8; line-height: 1.6;
+            background: rgba(255,255,255,0.5); border: 1px solid #e2e8f0;
+            border-radius: 10px; text-align: center;
+        }
+        .hero-disclaimer strong { color: #64748b; }
         section { scroll-margin-top: 4.5rem; }
+
+        /* Modals */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0; z-index: 200;
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
+            align-items: center; justify-content: center; padding: 1.5rem;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: #fff; border-radius: 20px; max-width: 600px; width: 100%;
+            max-height: 80vh; overflow-y: auto; padding: 2rem;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+            animation: modalIn 0.25s ease;
+        }
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .modal-box .modal-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+        .modal-box .modal-header h3 { font-size: 1.15rem; }
+        .modal-box .modal-header button {
+            background: none; border: none; cursor: pointer;
+            padding: 0.4rem; border-radius: 8px; color: #94a3b8; transition: all 0.2s;
+        }
+        .modal-box .modal-header button:hover { background: rgba(124,58,237,0.06); color: #7c3aed; }
+        .modal-box .modal-body { font-size: 0.88rem; color: #475569; line-height: 1.7; }
+        .modal-box .modal-body p { margin-bottom: 0.75rem; }
 
         .vp-grid {
             display: grid;
@@ -395,6 +429,9 @@
                 <div class="stat"><div class="num">112</div><div class="label">Endpoints</div></div>
                 <div class="stat"><div class="num">3</div><div class="label">Roles</div></div>
             </div>
+            <div class="hero-disclaimer">
+                Este sistema gestiona datos formales de facturación — RIF/NIT/RFC/RUC/CUIT, razones sociales e impuestos — para cumplir con requisitos contables y fiscales de cada país. <strong>No es un sistema fiscal certificado</strong>. No realiza declaraciones de impuestos ni retenciones legales. Cada comercio es responsable de su propio cumplimiento fiscal local.
+            </div>
         </section>
 
         <h2 id="por-que">Por qué TiendaPOS</h2>
@@ -648,11 +685,72 @@
             <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
 
+        <!-- Modals -->
+        <div class="modal-overlay" id="modalPrivacidad" onclick="if(event.target===this)closeModal('modalPrivacidad')">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3>Política de Privacidad</h3>
+                    <button onclick="closeModal('modalPrivacidad')" aria-label="Cerrar">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>En TiendaPOS, la protección de tus datos es una prioridad. Esta política describe cómo recopilamos, usamos y protegemos la información de nuestros usuarios.</p>
+                    <p><strong>Información que recopilamos:</strong> Datos de registro (nombre, correo electrónico, contraseña), información de la tienda (RIF/NIT/RFC, razón social, dirección) y datos transaccionales generados durante el uso del sistema.</p>
+                    <p><strong>Uso de la información:</strong> Utilizamos tus datos únicamente para proveer el servicio: procesar ventas, generar facturas, gestionar inventario y mantener tu cuenta activa. No compartimos tu información con terceros sin tu consentimiento explícito.</p>
+                    <p><strong>Seguridad:</strong> Implementamos medidas técnicas y organizativas para proteger tus datos contra acceso no autorizado, pérdida o alteración. Las comunicaciones están cifradas vía HTTPS y los tokens de autenticación se almacenan de forma segura.</p>
+                    <p><strong>Retención:</strong> Conservamos tus datos mientras tu cuenta esté activa. Al cancelar tu suscripción, puedes solicitar la eliminación completa de tus datos escribiendo a nuestro contacto.</p>
+                    <p><strong>Contacto:</strong> Para cualquier consulta sobre privacidad, escríbenos vía WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="modalTerminos" onclick="if(event.target===this)closeModal('modalTerminos')">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3>Términos del Servicio</h3>
+                    <button onclick="closeModal('modalTerminos')" aria-label="Cerrar">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Al utilizar TiendaPOS, aceptas los siguientes términos y condiciones. Te recomendamos leerlos detenidamente antes de usar el sistema.</p>
+                    <p><strong>Uso del servicio:</strong> TiendaPOS es un sistema de punto de venta diseñado para gestionar operaciones comerciales. El usuario se compromete a usar el sistema de forma ética y conforme a las leyes aplicables en su país.</p>
+                    <p><strong>Responsabilidad fiscal:</strong> TiendaPOS facilita la gestión de datos formales de facturación, pero no es un sistema fiscal certificado. El usuario es el único responsable de cumplir con sus obligaciones tributarias y de asegurarse de que el uso del sistema cumple con la normativa local.</p>
+                    <p><strong>Disponibilidad:</strong> Nos esforzamos por mantener el servicio operativo 24/7, pero no garantizamos disponibilidad ininterrumpida. El servicio se provee "tal cual" y podrían ocurrir interrupciones programadas o no programadas.</p>
+                    <p><strong>Limitación de responsabilidad:</strong> TiendaPOS no se hace responsable por daños directos o indirectos derivados del uso del sistema, incluyendo pero no limitado a pérdida de datos, interrupción del negocio o incumplimientos fiscales.</p>
+                    <p><strong>Modificaciones:</strong> Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán notificados a través del sistema.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="modalLegal" onclick="if(event.target===this)closeModal('modalLegal')">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3>Aviso Legal</h3>
+                    <button onclick="closeModal('modalLegal')" aria-label="Cerrar">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Propiedad intelectual:</strong> TiendaPOS es un software desarrollado de forma independiente. Todos los derechos sobre el código, la marca y la documentación están reservados.</p>
+                    <p><strong>Exención de responsabilidad fiscal:</strong> Este sistema no está certificado por ninguna autoridad tributaria. Los datos fiscales ingresados son responsabilidad exclusiva del usuario. Recomendamos consultar con un contador o asesor fiscal para garantizar el cumplimiento de las obligaciones tributarias locales.</p>
+                    <p><strong>Protección de datos:</strong> Cumplimos con los estándares básicos de protección de datos. Los datos se almacenan en servidores de terceros (Neon.tech para base de datos, Render para la aplicación) que cuentan con sus propias certificaciones de seguridad.</p>
+                    <p><strong>Jurisdicción:</strong> Este aviso legal se rige por las leyes de la República Bolivariana de Venezuela. Cualquier controversia será resuelta ante los tribunales competentes de Caracas.</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+            function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
+        </script>
+
         <footer>
             &copy; {{ date('Y') }} TiendaPOS &mdash; 
-            Backend en <a href="https://render.com" target="_blank">Render</a> &middot; 
-            Base de datos en <a href="https://neon.tech" target="_blank">Neon</a> &middot; 
-            <a href="https://github.com/belandriajunioremiro-ship-it/tiendapos-api" target="_blank">GitHub</a>
+            <a href="#" onclick="event.preventDefault();openModal('modalPrivacidad')">Privacidad</a> &middot; 
+            <a href="#" onclick="event.preventDefault();openModal('modalTerminos')">Términos</a> &middot; 
+            <a href="#" onclick="event.preventDefault();openModal('modalLegal')">Aviso legal</a>
         </footer>
 
     </div>
