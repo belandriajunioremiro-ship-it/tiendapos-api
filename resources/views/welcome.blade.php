@@ -97,7 +97,7 @@
         .mobile-menu .wa-link:hover { background: #1ebe5d; transform: scale(1.03); }
 
         .hero {
-            padding: clamp(3rem, 6vw, 5.5rem) 0 2.5rem; text-align: center;
+            padding: clamp(3rem, 6vw, 5.5rem) 0 1.5rem; text-align: center;
         }
         .hero h1 {
             font-size: clamp(1.8rem, 5vw, 3.5rem);
@@ -109,21 +109,12 @@
             max-width: 680px; margin: 0 auto 2rem; line-height: 1.7;
             padding: 0 0.5rem;
         }
-        .hero-stats {
-            display: flex; justify-content: center; gap: clamp(1.5rem, 4vw, 2.5rem);
-            flex-wrap: wrap; margin-top: 2.5rem; padding-top: 2rem;
-            border-top: 1px solid #e2e8f0;
-        }
-        .hero-stats .stat { text-align: center; min-width: 60px; }
-        .hero-stats .num { font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 800; color: #7c3aed; }
-        .hero-stats .label { font-size: 0.8rem; color: #64748b; margin-top: 0.15rem; }
         .hero-disclaimer {
-            max-width: 680px; margin: 1.5rem auto 0; padding: 0.75rem 1rem;
-            font-size: 0.75rem; color: #94a3b8; line-height: 1.6;
+            max-width: 680px; margin: 2rem auto 0; padding: 0.75rem 1rem;
+            font-size: 0.8rem; color: #475569; line-height: 1.6;
             background: rgba(255,255,255,0.5); border: 1px solid #e2e8f0;
             border-radius: 10px; text-align: center;
         }
-        .hero-disclaimer strong { color: #64748b; }
         section { scroll-margin-top: 4.5rem; }
 
         /* Modals */
@@ -424,14 +415,8 @@
                 Multi-tenant, multimoneda y preparado para los regímenes fiscales de 9 países.
                 Gestiona ventas, inventario, facturación y créditos desde un solo sistema.
             </p>
-            <div class="hero-stats">
-                <div class="stat"><div class="num">9</div><div class="label">Países</div></div>
-                <div class="stat"><div class="num">80+</div><div class="label">Tablas</div></div>
-                <div class="stat"><div class="num">112</div><div class="label">Endpoints</div></div>
-                <div class="stat"><div class="num">3</div><div class="label">Roles</div></div>
-            </div>
             <div class="hero-disclaimer">
-                Este sistema gestiona datos formales de facturación — RIF/NIT/RFC/RUC/CUIT, razones sociales e impuestos — para cumplir con requisitos contables y fiscales de cada país. <strong>No es un sistema fiscal certificado</strong>. No realiza declaraciones de impuestos ni retenciones legales. Cada comercio es responsable de su propio cumplimiento fiscal local.
+                Este sistema gestiona datos formales de facturación — <strong>RIF/NIT/RFC/RUC/CUIT</strong>, razones sociales e impuestos — para cumplir con requisitos contables y fiscales de cada país. <strong style="color:#dc2626">No es un sistema fiscal certificado</strong>. No realiza declaraciones de impuestos ni retenciones legales. Cada comercio es responsable de su propio cumplimiento fiscal local.
             </div>
         </section>
 
