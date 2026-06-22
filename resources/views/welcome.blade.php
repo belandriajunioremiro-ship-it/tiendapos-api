@@ -328,7 +328,7 @@
             box-shadow: 0 6px 28px rgba(37,211,102,0.45);
         }
         footer {
-            background: #7c3aed; padding: 2rem 1.5rem;
+            background: #7c3aed; padding: 2rem 1.5rem; width: 100%;
             font-size: 0.8rem; color: rgba(255,255,255,0.7); text-align: center;
         }
         footer a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
@@ -747,15 +747,17 @@
             function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
         </script>
 
-        <footer>
+    </div>
+
+    <footer>
+        <div class="container">
             <strong>&copy; {{ date('Y') }} TiendaPOS</strong> &mdash; 
             <a href="#" onclick="event.preventDefault();openModal('modalPrivacidad')"><strong>Privacidad</strong></a> &middot; 
             <a href="#" onclick="event.preventDefault();openModal('modalTerminos')"><strong>Términos</strong></a> &middot; 
             <a href="#" onclick="event.preventDefault();openModal('modalLegal')"><strong>Aviso legal</strong></a>
             <br>
             <span style="font-size:0.75rem;opacity:0.6;margin-top:0.5rem;display:inline-block">Backend en Render &middot; Base de datos en Neon</span>
-        </footer>
-
-    </div>
+        </div>
+    </footer>
 </body>
 </html>
