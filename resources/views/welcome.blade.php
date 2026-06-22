@@ -123,19 +123,39 @@
 
         .countries-section { padding: 2rem 0 4rem; }
         .country-chips {
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem;
+            margin-bottom: 0.75rem;
         }
         .chip {
-            padding: 0.5rem 1rem; border-radius: 8px;
+            width: 52px; height: 52px; border-radius: 50%;
             background: #fff; border: 1px solid #e2e8f0;
-            font-size: 0.85rem; font-weight: 600; color: #475569;
-            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 1.5rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .chip:hover { border-color: #c4b5fd; transform: translateY(-2px); }
+        .country-names {
+            text-align: center; font-size: 0.95rem; color: #475569;
+            margin-bottom: 2rem; font-weight: 500;
+        }
+        .fiscal-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem; max-width: 860px; margin: 0 auto;
+        }
+        .fiscal-item {
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+            padding: 1rem 1.25rem; text-align: center;
             transition: border-color 0.2s;
         }
-        .chip:hover { border-color: #c4b5fd; }
-        .chip .flag { font-size: 1.1rem; }
-        .fiscal-note { text-align: center; font-size: 0.8rem; color: #94a3b8; max-width: 600px; margin: 0 auto; }
+        .fiscal-item:hover { border-color: #c4b5fd; }
+        .fiscal-item .fiscal-label {
+            display: block; font-size: 0.7rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            color: #7c3aed; margin-bottom: 0.25rem;
+        }
+        .fiscal-item span:last-child {
+            font-size: 0.85rem; color: #475569;
+        }
 
         .plans-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -342,20 +362,38 @@
 
         <section class="countries-section">
             <div class="country-chips">
-                <div class="chip"><span class="flag">🇻🇪</span> Venezuela</div>
-                <div class="chip"><span class="flag">🇨🇴</span> Colombia</div>
-                <div class="chip"><span class="flag">🇲🇽</span> México</div>
-                <div class="chip"><span class="flag">🇪🇨</span> Ecuador</div>
-                <div class="chip"><span class="flag">🇦🇷</span> Argentina</div>
-                <div class="chip"><span class="flag">🇵🇪</span> Perú</div>
-                <div class="chip"><span class="flag">🇨🇱</span> Chile</div>
-                <div class="chip"><span class="flag">🇧🇴</span> Bolivia</div>
-                <div class="chip"><span class="flag">🇺🇾</span> Uruguay</div>
+                <div class="chip">🇻🇪</div>
+                <div class="chip">🇨🇴</div>
+                <div class="chip">🇲🇽</div>
+                <div class="chip">🇪🇨</div>
+                <div class="chip">🇦🇷</div>
+                <div class="chip">🇵🇪</div>
+                <div class="chip">🇨🇱</div>
+                <div class="chip">🇧🇴</div>
+                <div class="chip">🇺🇾</div>
             </div>
-            <p class="fiscal-note">
-                Cada país con su identificación fiscal (RIF, NIT, RFC, RUC, CUIT), tasas de IVA/IGV y métodos de pago locales.
-                <br><strong>Nota:</strong> Este sistema gestiona datos formales de facturación, pero no es un sistema fiscal certificado para declaraciones de impuestos.
-            </p>
+            <div class="country-names">
+                Venezuela &middot; Colombia &middot; México &middot; Ecuador &middot; Argentina
+                &middot; Perú &middot; Chile &middot; Bolivia &middot; Uruguay
+            </div>
+            <div class="fiscal-grid">
+                <div class="fiscal-item">
+                    <span class="fiscal-label">Identificación fiscal</span>
+                    <span>RIF, NIT, RFC, RUC, CUIT</span>
+                </div>
+                <div class="fiscal-item">
+                    <span class="fiscal-label">Impuestos</span>
+                    <span>IVA / IGV por país</span>
+                </div>
+                <div class="fiscal-item">
+                    <span class="fiscal-label">Monedas</span>
+                    <span>USD, VES, COP, MXN, ARS, PEN, CLP, BOB, UYU</span>
+                </div>
+                <div class="fiscal-item">
+                    <span class="fiscal-label">Estatus fiscal</span>
+                    <span>Datos formales — sin certificación fiscal</span>
+                </div>
+            </div>
         </section>
 
         <h2 id="planes">Planes</h2>
