@@ -16,8 +16,6 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --no-script
 COPY . .
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction
-RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
-
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
