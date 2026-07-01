@@ -3,7 +3,7 @@
 return [
     'paths'                => ['api/*', 'sanctum/csrf-cookie'],
     'allowed_methods'      => ['*'],
-    'allowed_origins'      => ['http://localhost:3000', 'https://tu-dominio.vercel.app'],
+    'allowed_origins'      => ['http://localhost:3000', 'https://apptiendapos.vercel.app'],
     'allowed_headers'      => ['*'],
     'exposed_headers'      => [],
     'max_age'              => 0,
