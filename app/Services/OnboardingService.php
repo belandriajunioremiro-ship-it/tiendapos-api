@@ -277,42 +277,18 @@ class OnboardingService
 
     private function obtenerPlanPorPais(string $pais): Plane
     {
-        $planNombre = match ($pais) {
-            'VE', 'CO' => 'Trial',
-            'MX', 'EC' => 'Básico',
-            'AR', 'PE' => 'Pro',
-            'CL', 'BO', 'UY' => 'Premium',
-            default => 'Trial',
-        };
-
-        return Plane::where('nombre', $planNombre)->first() ?? Plane::first();
+        return Plane::where('nombre', 'Trial')->first() ?? Plane::first();
     }
 
     private function crearSuscripcionSegunPlan(int $tiendaId, Plane $plan, string $pais): void
     {
-        if (in_array($pais, ['VE', 'CO'])) {
-            Suscripcion::create([
-                'tienda_id'    => $tiendaId,
-                'plan_id'      => $plan->id,
-                'estado'       => 'trial',
-                'inicio_trial' => now(),
-                'fin_trial'    => now()->addDays($plan->dias_trial ?? 14),
-                'auto_renovar' => true,
-            ]);
-            return;
-        }
-
-        $inicio = now()->subDays(5);
-        $fin = now()->addDays(25);
-
         Suscripcion::create([
-            'tienda_id'     => $tiendaId,
-            'plan_id'       => $plan->id,
-            'estado'        => 'activa',
-            'inicio_pago'   => $inicio,
-            'fin_periodo'   => $fin->toDateString(),
-            'proximo_cobro' => $fin->copy()->addMonth()->toDateString(),
-            'auto_renovar'  => true,
+            'tienda_id'    => $tiendaId,
+            'plan_id'      => $plan->id,
+            'estado'       => 'trial',
+            'inicio_trial' => now(),
+            'fin_trial'    => now()->addDays($plan->dias_trial ?? 14),
+            'auto_renovar' => true,
         ]);
     }
 }
